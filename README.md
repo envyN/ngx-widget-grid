@@ -15,7 +15,7 @@ $ npm install ngx-widget-grid
 
 Add the ngx-widget-grid module as a dependency to your application module:
 
-```ecmascript 6
+```typescript
 import { NgxWidgetGridModule } from 'ngx-widget-grid';
 
 @NgModule({
