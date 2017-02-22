@@ -1,0 +1,34 @@
+$firstBorder: 1px dotted rgb(215, 215, 215);
+$secondBorder: 1px solid rgb(240, 240, 240);
+$highlightBgColor: rgba(0, 113, 188, 0.2);
+.wg-grid-overlay {
+  overflow: hidden;
+
+  * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .wg-preview-item {
+    position: absolute;
+    display: inline-block;
+
+    &.wg-preview-row {
+      width: 100%;
+      border-top: $firstBorder;
+      border-bottom: $secondBorder;
+    }
+
+    &.wg-preview-column {
+      height: 100%;
+      border-left: $firstBorder;
+      border-right: $secondBorder;
+    }
+
+    &.wg-preview-highlight {
+      background-color: $highlightBgColor;
+      z-index: 1;
+    }
+  }
+}

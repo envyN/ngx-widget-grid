@@ -1,0 +1,58 @@
+{
+  "name": "ngx-widget-grid",
+  "version": "1.0.0",
+  "description": "An angular 2.0+ module for widget-grids to be used for dashboard",
+  "main": "index.js",
+  "dependencies": {
+    "rxjs": "^5.2.0",
+    "typescript": "^2.2.0",
+    "typings": "^2.1.0",
+    "zone.js": "^0.7.7"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^2.2.1",
+    "@angular/compiler-cli": "^2.2.1",
+    "@angular/core": "^2.2.1",
+    "@angular/platform-browser": "^2.2.1",
+    "@angular/platform-browser-dynamic": "^2.2.1",
+    "@types/chai": "^3.4.33",
+    "@types/core-js": "^0.9.34",
+    "@types/jasmine": "^2.5.36",
+    "@types/sinon": "^1.16.30",
+    "@types/sinon-chai": "^2.7.27",
+    "tslint": "^4.2.0",
+    "rxjs": "^5.0.0",
+    "core-js": "^2.4.1",
+    "typescript": "^2.0.3",
+    "@types/webpack": "^2.2.4"
+  },
+  "peerDependencies": {
+    "@angular/common": "^2.2.1",
+    "@angular/core": "^2.0.0"
+  },
+  "scripts": {
+    "prepublish": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/envyN/ngx-widget-grid.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "widget",
+    "widget-grid",
+    "grid",
+    "ng",
+    "ng2",
+    "dashboard"
+  ],
+  "author": "Naveen Adarsh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/envyN/ngx-widget-grid/issues"
+  },
+  "typings": "./index.d.ts",
+  "homepage": "https://github.com/envyN/ngx-widget-grid#readme"
+}

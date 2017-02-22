@@ -1,0 +1,187 @@
+:host {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+.wg-widget {
+  position: absolute;
+  z-index: 5;
+}
+
+.wg-grid-overlay,
+.wg-widget-content,
+.wg-widget-overlay,
+.wg-widget-content > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.wg-widget-content {
+  overflow: hidden;
+}
+
+.wg-widget-edit {
+  position: relative;
+  z-index: 20;
+}
+
+.wg-widget-edit-move {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  bottom: 6px;
+  left: 6px;
+  z-index: 20;
+  touch-action: none;
+  cursor: move;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.wg-moving,
+.wg-resizing {
+  z-index: 9999;
+}
+
+.wg-moving > .wg-widget-content,
+.wg-resizing > .wg-widget-content {
+  opacity: 0.25;
+}
+
+.wg-moving .wg-widget-edit-move {
+  background-color: rgba(0, 113, 188, 0.06);
+  cursor: move;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.wg-widget-edit-resize {
+  position: absolute;
+  touch-action: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+}
+
+.wg-resize {
+  position: absolute;
+}
+
+.wg-resize-diag {
+  border-color: rgba(0, 113, 188, 0.75);
+  border-style: solid;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+
+.wg-resize-diag:hover {
+  border-color: rgba(0, 138, 229, 0.75);
+}
+
+.wg-resize-diag.dragging {
+  border-color: rgba(0, 174, 239, 0.75);
+}
+
+.wg-resize-axis {
+  background-color: rgba(0, 113, 188, 0.12);
+}
+
+.wg-resize-axis.dragging {
+  background-color: rgba(0, 174, 239, 0.24);
+}
+
+.wg-resize-nw {
+  top: 0;
+  left: 0;
+  cursor: nw-resize;
+  border-width: 16px 16px 0 0;
+  border-right-color: transparent !important;
+}
+
+.wg-resize-ne {
+  top: 0;
+  right: 0;
+  cursor: ne-resize;
+  border-width: 16px 0 0 16px;
+  border-left-color: transparent !important;
+}
+
+.wg-resize-se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+  border-width: 0 0 16px 16px;
+  border-left-color: transparent !important;
+}
+
+.wg-resize-sw {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize;
+  border-width: 0 16px 16px 0;
+  border-right-color: transparent !important;
+}
+
+.wg-resize-n {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6px;
+  cursor: n-resize;
+}
+
+.wg-resize-e {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: e-resize;
+}
+
+.wg-resize-s {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  cursor: s-resize;
+}
+
+.wg-resize-w {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 6px;
+  cursor: w-resize;
+}
+
+.wg-grid-overlay {
+  overflow: hidden;
+}
+
+.wg-preview-item {
+  position: absolute;
+  display: inline-block;
+}
+
+.wg-preview-row {
+  width: 100%;
+  border-top: 1px dotted rgb(215, 215, 215);
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.wg-preview-column {
+  height: 100%;
+  border-left: 1px dotted rgb(215, 215, 215);
+  border-right: 1px solid rgb(240, 240, 240);
+}
+
+.wg-preview-highlight {
+  background-color: rgba(0, 113, 188, 0.2);
+  z-index: 1;
+}
