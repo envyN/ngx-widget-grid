@@ -97,12 +97,13 @@ Highlights the largest free area in the grid, if any. This area will be automati
 ##### `wg-grid-full` & `wg-grid-space-available` (TODO)
 The grid emits `wg-grid-full` and `wg-grid-space-available` in the respective situations, so that you can e.g. enable/disable UI elements accordingly.
 
-```html
-<ngx-grid columns="20" rows="15" (widgetPositionChange)="onWidgetChange($event)">
-```
 
 ##### `widgetPositionChange`
 Emitted whenever the position of a widget is changed. The event comes with an attached object argument, which contains the affected widget's `index` and its `newPosition`.
+
+```html
+<ngx-grid columns="20" rows="15" (widgetPositionChange)="onWidgetChange($event)">
+```
 
 ## Build
 Check out `/src` for the original source code.
