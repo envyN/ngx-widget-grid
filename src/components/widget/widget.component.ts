@@ -5,7 +5,7 @@ import {ResizeDirections, AllDirections} from "../../Utils";
 @Component({
     selector: 'ngx-widget',
     styleUrls: ['./widget.component.scss'],
-    templateUrl: 'widget.component.html'
+    templateUrl: './widget.component.html'
 })
 export class NgxWidgetComponent {
     constructor(private elRef: ElementRef) {

@@ -6,7 +6,7 @@ import {GridRectangle} from "../../models/GridRectangle.model";
 @Component({
     selector: 'ngx-grid-overlay',
     styleUrls: ['./gridOverlay.component.scss'],
-    templateUrl: 'gridOverlay.component.html'
+    templateUrl: './gridOverlay.component.html'
 })
 export class NgxGridOverlayComponent {
     constructor(private sanitizer: DomSanitizer) {
