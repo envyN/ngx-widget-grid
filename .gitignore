@@ -9,6 +9,7 @@ Thumbs.db
 .DS_Store
 
 # Ignored files
-*.js
+src/**/*.js
+build/**/*.js
 *.map
 *.d.ts
