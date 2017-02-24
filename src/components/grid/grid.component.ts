@@ -10,7 +10,7 @@ import {WidgetConfig} from "../../models/WidgetConfig.model";
 import {GridRectangle} from "../../models/GridRectangle.model";
 @Component({
     selector: 'ngx-widget-grid',
-    styleUrls: ['./grid.component.scss'],
+    styleUrls: ['./grid.component.css'],
     templateUrl: './grid.component.html'
 })
 export class NgxWidgetGridComponent implements AfterViewInit {

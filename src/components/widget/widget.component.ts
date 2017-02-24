@@ -4,7 +4,7 @@ import {GridRectangle} from "../../models/GridRectangle.model";
 import {ResizeDirections, AllDirections} from "../../Utils";
 @Component({
     selector: 'ngx-widget',
-    styleUrls: ['./widget.component.scss'],
+    styleUrls: ['./widget.component.css'],
     templateUrl: './widget.component.html'
 })
 export class NgxWidgetComponent {

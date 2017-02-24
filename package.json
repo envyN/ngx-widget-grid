@@ -20,18 +20,28 @@
     "@types/jasmine": "^2.5.36",
     "@types/sinon": "^1.16.30",
     "@types/sinon-chai": "^2.7.27",
-    "tslint": "^4.2.0",
-    "rxjs": "^5.0.0",
+    "@types/webpack": "^2.2.4",
     "core-js": "^2.4.1",
-    "typescript": "^2.0.3",
-    "@types/webpack": "^2.2.4"
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-inline-ng2-template": "^4.0.0",
+    "gulp-preprocess": "^2.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-typescript": "^3.1.5",
+    "gulp-util": "^3.0.8",
+    "merge2": "^1.0.3",
+    "rxjs": "^5.0.0",
+    "tslint": "^4.2.0",
+    "typescript": "^2.2.1"
   },
   "peerDependencies": {
     "@angular/common": "^2.2.1",
     "@angular/core": "^2.0.0"
   },
   "scripts": {
-    "prepublish": "tsc",
+    "prepublish": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
