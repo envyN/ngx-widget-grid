@@ -4,6 +4,7 @@
   "description": "An angular 2.0+ module for widget-grids to be used for dashboard",
   "main": "index.js",
   "dependencies": {
+    "run-sequence": "^1.2.2",
     "rxjs": "^5.2.0",
     "typescript": "^2.2.0",
     "typings": "^2.1.0",
@@ -44,6 +45,7 @@
   },
   "scripts": {
     "prepublish": "gulp",
+    "postversion": "git push && git push --tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

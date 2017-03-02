@@ -43,6 +43,11 @@ export class Grid {
         }
     }
 
+    hasWidget(widget: WidgetConfig) {
+        let widgetIndex = this._widgets.indexOf(widget);
+        return widgetIndex > -1;
+    }
+
     resize(rows: number, columns: number) {
         columns = columns || 0;
         rows = rows || 0;

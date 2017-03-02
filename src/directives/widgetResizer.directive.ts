@@ -110,7 +110,7 @@ export class NgxWidgetResizerDirective {
             right: eventOffsetX - this.el.nativeElement.offsetWidth
         };
 
-        this.gridPositions = this.gridCmp.getPositions();
+        this.gridPositions = this.gridCmp.getGridRectangle();
     }
 
     @HostListener('window:mousemove', ['$event'])
