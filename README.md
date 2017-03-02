@@ -37,7 +37,7 @@ export class AppModule { }
 ```html
 <ngx-widget-grid [rows]="4" [columns]="5" [highlightNextPosition]="false"
                  [showGrid]="true" (widgetPositionChange)="onWidgetChange($event)">
-  <ngx-widget [position]="{top: 2,left: 2,height: 1,width: 1}"
+  <ngx-widget [(position)]="{top: 2,left: 2,height: 1,width: 1}"
               [movable]="true" [resizable]="true">
     <div style="height:100%;width:100%; display:flex;">
       <div style="height:100%;width:100%; padding:10px; background-color: rgb(140, 198, 0);">
@@ -51,9 +51,15 @@ export class AppModule { }
 
 ### Adding Traits
 #### Widgets
+##### `position`
+```html
+<ngx-widget [(position)]="widget.position"...>
+```
+You can bind the position of the widget to data received from server so that even if the widget is moved, the new positions are always updated in the widget configuration.
+
 ##### `movable`
 ```html
-<ngx-widget [movable]="true" position="...">
+<ngx-widget [movable]="true" [(position)]="widget.position"...>
 ```
 If `movable` is true, users will be able to move the respective widget.
 
@@ -61,7 +67,7 @@ If `movable` is true, users will be able to move the respective widget.
 
 ##### `resizable`
 ```html
-<ngx-widget [resizable]="true" position="...">
+<ngx-widget [resizable]="true" [(position)]="widget.position"...>
 ```
 If `resizable` is true, users will be able to resize the respective widget.
 
@@ -69,7 +75,7 @@ If `resizable` is true, users will be able to resize the respective widget.
 
 Optionally, you can limit the resize directions:
 ```html
-<ngx-widget [resizeDirections]="['NW', 'NE', 'E', 'SW']" ...>
+<ngx-widget [resizeDirections]="['NW', 'NE', 'E', 'SW']" [(position)]="widget.position"...>
 ```
 
 ![Restricted Resizing](https://raw.githubusercontent.com/patbuergin/angular-widget-grid/master/doc/wg-4.png)
@@ -94,16 +100,35 @@ Highlights the largest free area in the grid, if any. This area will be automati
 
 
 ### Events
-##### `wg-grid-full` & `wg-grid-space-available` (TODO)
-The grid emits `wg-grid-full` and `wg-grid-space-available` in the respective situations, so that you can e.g. enable/disable UI elements accordingly.
-
-
+##### `gridFull`
+The grid emits `gridFull`event as `true` (when grid has been fully occupied) or `false` when there is still some space left in the grid, so that you can e.g. enable/disable UI elements accordingly.
+```html
+<ngx-grid columns="20" rows="15" (gridFull)="onGridFull($event)">
+```
+```javascript
+function onGridFull(isGridFull) {
+    if(isGridFull){
+        ...
+        //make add widget button disabled
+        ...
+    }else{
+        ...
+        //make add widget button enabled
+        ...
+    }
+}
+```
 ##### `widgetPositionChange`
 Emitted whenever the position of a widget is changed. The event comes with an attached object argument, which contains the affected widget's `index` and its `newPosition`.
 
 ```html
 <ngx-grid columns="20" rows="15" (widgetPositionChange)="onWidgetChange($event)">
 ```
+
+### Functions
+#### getNextPosition
+`getNextPosition` is a function you could call to get details about the next available position that is being highlighted as part of `highlightNextPosition`.
+
 
 ## Build
 Check out `/src` for the original source code.

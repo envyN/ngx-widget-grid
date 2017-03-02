@@ -15,8 +15,18 @@ import {GridRectangle} from "../../models/GridRectangle.model";
 })
 export class NgxWidgetGridComponent implements AfterViewInit {
     ngAfterViewInit(): void {
+        this.refreshWidgets();
+        this.widgetComponents.changes.subscribe(() => {
+            this.refreshWidgets();
+        });
+    }
+
+    refreshWidgets() {
         this.widgetComponents.forEach((widget: NgxWidgetComponent) => {
-            this.addWidget(widget, true);
+            if (!this.hasWidget(widget)) {
+                this.addWidget(widget, true);
+            } else {
+            }
         });
         this.updateRendering();
     }
@@ -24,7 +34,6 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     constructor(private el: ElementRef, private _renderer: Renderer) {
         this.grid = new Grid(this.rows, this.columns);
         this.gridRenderer = new GridRenderer(this.grid);
-        this.updateRendering();
     }
 
     private _rows: number;
@@ -52,6 +61,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     @Input() private showGrid: boolean = false;
 
     private _highlightNextPosition: boolean = false;
+
     @Input()
     set highlightNextPosition(highlightNext: boolean) {
         this._highlightNextPosition = highlightNext;
@@ -83,6 +93,10 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     private highlightedArea: GridRectangle;
     private gridAlreadyFull: boolean = false;
 
+    hasWidget(widget: NgxWidgetComponent): boolean {
+        return this.grid.hasWidget(widget.getConfig());
+    }
+
     addWidget(widget: NgxWidgetComponent, deferredRender?: boolean) {
         this.grid.add(widget.getConfig());
         if (!deferredRender) {
@@ -107,7 +121,6 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     updateRendering() {
         this.gridRenderer.render(this.grid, this.emitUpdatePosition.bind(this));
         this.updateNextPositionHighlight();
-        this.assessAvailableGridSpace();
         //TODO: retrieve all widgets and call their updateRendering
         if (this.widgetComponents) {
             this.widgetComponents.forEach((widget: NgxWidgetComponent) => {
@@ -116,7 +129,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         }
     }
 
-    getPositions(): GridRectangle {
+    getGridRectangle(): GridRectangle {
         let gridContainer = this.el.nativeElement;
 
         // c.f. jQuery#offset: https://github.com/jquery/jquery/blob/2d715940b9b6fdeed005cd006c8bf63951cf7fb2/src/offset.js#L93-105
@@ -179,6 +192,14 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         if (this.highlightNextPosition) {
             this.highlightedArea = this.gridRenderer.getNextPosition();
         }
+    }
+
+    getNextPosition() {
+        return this.gridRenderer.getNextPosition();
+    }
+
+    getPositions() {
+        return this.grid.widgets;
     }
 
     resetHighlights() {

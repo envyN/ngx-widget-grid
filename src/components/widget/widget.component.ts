@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef} from "@angular/core";
+import {Component, Input, ElementRef, Output, EventEmitter} from "@angular/core";
 import {WidgetConfig} from "../../models/WidgetConfig.model";
 import {GridRectangle} from "../../models/GridRectangle.model";
 import {ResizeDirections, AllDirections} from "../../Utils";
@@ -17,11 +17,15 @@ export class NgxWidgetComponent {
     set position(position: GridRectangle) {
         this._position = position;
         this.widgetConfig.position = position;
+        this.positionChange.emit(position);
     };
 
     get position(): GridRectangle {
         return this._position;
     }
+
+    @Output()
+    positionChange: EventEmitter<GridRectangle> = new EventEmitter();
 
     @Input()
     private movable: boolean = false;
@@ -53,7 +57,6 @@ export class NgxWidgetComponent {
 
     @Input()
     set resizeDirections(dirs: string[]) {
-        console.log(this._resizeDirections, dirs);
         this._resizeDirections = dirs.filter((dir: string) => {
             return AllDirections.indexOf(dir.toUpperCase()) !== -1;
         });

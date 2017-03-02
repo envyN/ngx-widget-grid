@@ -59,7 +59,7 @@ export class NgxWidgetMoverDirective {
             left: eventOffsetX + this.el.nativeElement.offsetLeft || 0
         });
 
-        this.gridPositions = this.gridCmp.getPositions();
+        this.gridPositions = this.gridCmp.getGridRectangle();
         this.cellHeight = (this.gridCmp.grid.cellSize.height / 100) * this.gridPositions.height;
         this.cellWidth = (this.gridCmp.grid.cellSize.width / 100) * this.gridPositions.width;
         this.enableDrag = this.widgetCmp.getConfig().getId();
