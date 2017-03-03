@@ -8,7 +8,15 @@
   }
   &.wg-moving .wg-widget-content,
   &.wg-resizing .wg-widget-content {
-    opacity: 0.25;
+    opacity: 0.2;
+    z-index: 18;
+  }
+  &.wg-moving {
+    .wg-widget-edit-move {
+      cursor: move;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+    }
   }
 }
 
@@ -23,18 +31,6 @@
   cursor: move;
   cursor: -moz-grab;
   cursor: -webkit-grab;
-}
-
-.wg-moving,
-.wg-resizing {
-  z-index: 9999;
-}
-
-.wg-moving .wg-widget-edit-move {
-  background-color: rgba(0, 113, 188, 0.06);
-  cursor: move;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
 }
 
 .wg-widget-edit-resize {
