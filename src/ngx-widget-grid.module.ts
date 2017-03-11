@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core";
+import {NgModule, ModuleWithProviders} from "@angular/core";
 import {NgxGridOverlayComponent} from "./components/gridOverlay/gridOverlay.component";
 import {NgxWidgetComponent} from "./components/widget/widget.component";
 import {NgxWidgetGridComponent} from "./components/grid/grid.component";
@@ -21,5 +21,17 @@ import {NgxWidgetResizerDirective} from "./directives/widgetResizer.directive";
     ]
 })
 export class NgxWidgetGridModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: NgxWidgetGridModule,
+            providers: []
+        };
+    }
 
+    static forChild(): ModuleWithProviders {
+        return {
+            ngModule: NgxWidgetGridModule,
+            providers: []
+        };
+    }
 }
