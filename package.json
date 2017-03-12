@@ -11,12 +11,13 @@
     "zone.js": "^0.7.7"
   },
   "devDependencies": {
-    "@angular/common": "^2.2.1",
-    "@angular/core": "^2.2.1",
-    "@angular/compiler": "^2.2.1",
-    "@angular/compiler-cli": "^2.2.1",
-    "@angular/platform-browser": "^2.2.1",
-    "@angular/platform-browser-dynamic": "^2.2.1",
+    "@angular/common": "^2.4.9",
+    "@angular/compiler": "^2.4.9",
+    "@angular/compiler-cli": "^2.4.9",
+    "@angular/core": "^2.4.9",
+    "@angular/platform-browser": "^2.4.9",
+    "@angular/platform-browser-dynamic": "^2.4.9",
+    "@angular/platform-server": "^2.4.9",
     "@types/chai": "^3.4.33",
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.36",
@@ -34,14 +35,16 @@
     "gulp-typescript": "^3.1.5",
     "gulp-util": "^3.0.8",
     "merge2": "^1.0.3",
+    "rollup": "^0.41.5",
+    "rollup-plugin-buble": "^0.15.0",
     "run-sequence": "^1.2.2",
     "rxjs": "^5.0.0",
     "tslint": "^4.2.0",
     "typescript": "^2.2.1"
   },
   "peerDependencies": {
-    "@angular/common": "^2.2.1",
-    "@angular/core": "^2.2.1"
+    "@angular/common": "^2.4.9",
+    "@angular/core": "^2.4.9"
   },
   "scripts": {
     "prepublish": "gulp",

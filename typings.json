@@ -1,9 +1,0 @@
-{
-  "ambientDependencies": {
-    "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
-    "moment": "github:DefinitelyTyped/DefinitelyTyped/moment/moment-node.d.ts#1ec036686e70ad0d837ed2443684d54bca13af01",
-    "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
-  }
-}
