@@ -10,7 +10,6 @@ Thumbs.db
 
 # Ignored files
 src/**/*.js
-build/**/*.js
 *.map
 *.d.ts
 
