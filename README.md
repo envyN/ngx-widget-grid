@@ -16,7 +16,7 @@ $ npm install ngx-widget-grid
 Add the ngx-widget-grid module as a dependency to your application module:
 
 ```
-import { NgxWidgetGridModule } from 'ngx-widget-grid';
+import { NgxWidgetGridModule } from 'ngx-widget-grid/dist';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,14 @@ import { NgxWidgetGridModule } from 'ngx-widget-grid';
 })
 export class AppModule { }
 ```
-
+If using SystemJS add this to systemJS config:
+```javascript
+packages: {
+    ...
+    'ngx-widget-grid/dist': {main: 'bundles/ngx-widget-grid.umd.js', defaultExtension: 'js'},
+    ...
+}
+```
 ## Usage
 #### Minimal Example
 ```html
