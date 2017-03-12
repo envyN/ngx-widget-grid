@@ -27,33 +27,32 @@ export class NgxWidgetComponent {
     @Output()
     positionChange: EventEmitter<GridRectangle> = new EventEmitter();
 
-    @Input()
-    private movable: boolean = false;
+    @Input() movable: boolean = false;
 
     private _resizable: boolean = false;
     @Input()
-    private set resizable(resizable: boolean) {
+    set resizable(resizable: boolean) {
         this._resizable = resizable;
         if (resizable) {
             this.setResizeDirections();
         }
     }
 
-    private get resizable() {
+    get resizable() {
         return this._resizable;
     }
 
-    private allDirections: any = ResizeDirections;
+    public allDirections: any = ResizeDirections;
 
     private _resizeDirections: string[] = AllDirections;
-    private isTopResizable: boolean = false;
-    private isRightResizable: boolean = false;
-    private isBottomResizable: boolean = false;
-    private isLeftResizable: boolean = false;
-    private isTopRightResizable: boolean = false;
-    private isTopLeftResizable: boolean = false;
-    private isBottomRightResizable: boolean = false;
-    private isBottomLeftResizable: boolean = false;
+    public isTopResizable: boolean = false;
+    public isRightResizable: boolean = false;
+    public isBottomResizable: boolean = false;
+    public isLeftResizable: boolean = false;
+    public isTopRightResizable: boolean = false;
+    public isTopLeftResizable: boolean = false;
+    public isBottomRightResizable: boolean = false;
+    public isBottomLeftResizable: boolean = false;
 
     @Input()
     set resizeDirections(dirs: string[]) {

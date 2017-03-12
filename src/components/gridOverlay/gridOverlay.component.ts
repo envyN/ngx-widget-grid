@@ -13,18 +13,18 @@ export class NgxGridOverlayComponent {
 
     }
 
-    private activeHighlight: any = null;
-    private gridRows: any[] = [];
-    private gridCols: any[] = [];
+    public activeHighlight: any = null;
+    public gridRows: any[] = [];
+    public gridCols: any[] = [];
     private _renderer: GridRenderer;
 
     @Input()
-    private set rows(rows: number) {
+    set rows(rows: number) {
         this.updateGridLines(this.renderer, this.showGrid);
     }
 
     @Input()
-    private set cols(rows: number) {
+    set cols(rows: number) {
         this.updateGridLines(this.renderer, this.showGrid);
     }
 

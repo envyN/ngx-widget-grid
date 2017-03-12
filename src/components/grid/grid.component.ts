@@ -58,7 +58,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         return this._columns;
     }
 
-    @Input() private showGrid: boolean = false;
+    @Input() showGrid: boolean = false;
 
     private _highlightNextPosition: boolean = false;
 
@@ -89,8 +89,8 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     private widgetComponents: QueryList<NgxWidgetComponent>;
 
     public grid: Grid;
-    private gridRenderer: GridRenderer;
-    private highlightedArea: GridRectangle;
+    public gridRenderer: GridRenderer;
+    public highlightedArea: GridRectangle;
     private gridAlreadyFull: boolean = false;
 
     hasWidget(widget: NgxWidgetComponent): boolean {
