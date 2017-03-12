@@ -9,3 +9,9 @@ Thumbs.db
 /aot-compiled
 *.ts
 !*.d.ts
+gulpfile.js
+tsconfig.json
+tsconfig-aot.json
+rollup.config.js
+_config.yml
+.idea
