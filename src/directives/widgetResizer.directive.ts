@@ -20,13 +20,13 @@ export class NgxWidgetResizerDirective {
         this.parentContainer = this.el.nativeElement.parentElement;
     }
 
-    private moveUpAllowed: boolean = false;
-    private moveDownAllowed: boolean = false;
-    private moveLeftAllowed: boolean = false;
-    private moveRightAllowed: boolean = false;
-    private _resizeDirection: string;
+    public moveUpAllowed: boolean = false;
+    public moveDownAllowed: boolean = false;
+    public moveLeftAllowed: boolean = false;
+    public moveRightAllowed: boolean = false;
+    public _resizeDirection: string;
     @Input('ngx-widget-resizer')
-    private set resizeDirection(dir: string) {
+    public set resizeDirection(dir: string) {
         this._resizeDirection = dir;
         this.moveUpAllowed = false;
         this.moveDownAllowed = false;
@@ -65,19 +65,19 @@ export class NgxWidgetResizerDirective {
         }
     }
 
-    private get resizeDirection() {
+    public get resizeDirection() {
         return this._resizeDirection;
     }
 
-    private parentContainer: any;
-    private cellHeight: number;
-    private cellWidth: number;
-    private startRender: any;
-    private gridPositions: GridRectangle;
-    private delta: {top: number, right: number, bottom: number, left: number};
-    private draggerOffset: {top: number, right: number, bottom: number, left: number};
-    private startPosition: any;
-    private enableDrag: string = null;
+    public parentContainer: any;
+    public cellHeight: number;
+    public cellWidth: number;
+    public startRender: any;
+    public gridPositions: GridRectangle;
+    public delta: {top: number, right: number, bottom: number, left: number};
+    public draggerOffset: {top: number, right: number, bottom: number, left: number};
+    public startPosition: any;
+    public enableDrag: string = null;
 
 
     @HostListener('mousedown', ['$event'])

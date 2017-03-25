@@ -22,15 +22,15 @@ export class NgxWidgetMoverDirective {
                 private widgetCmp: NgxWidgetComponent) {
     }
 
-    private cellHeight: number;
-    private cellWidth: number;
-    private startRender: RectanglePixels;
-    private gridPositions: any;
-    private moverOffset: GridRectangle;
-    private mouseDownPosition: any;
-    private desiredPosition: any;
-    private startPosition: GridRectangle;
-    private enableDrag: string = null;
+    public cellHeight: number;
+    public cellWidth: number;
+    public startRender: RectanglePixels;
+    public gridPositions: any;
+    public moverOffset: GridRectangle;
+    public mouseDownPosition: any;
+    public desiredPosition: any;
+    public startPosition: GridRectangle;
+    public enableDrag: string = null;
 
     @HostListener('mousedown', ['$event'])
     onDown(event: MouseEvent) {

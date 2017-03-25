@@ -1,6 +1,6 @@
 export class CellSize {
-  private _height: number = 0;
-  private _width: number = 0;
+  public _height: number = 0;
+  public _width: number = 0;
 
   constructor(rowCount: number, columnCount: number) {
     let height = rowCount ? 100 / rowCount : 0,

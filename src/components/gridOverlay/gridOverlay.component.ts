@@ -16,7 +16,7 @@ export class NgxGridOverlayComponent {
     public activeHighlight: any = null;
     public gridRows: any[] = [];
     public gridCols: any[] = [];
-    private _renderer: GridRenderer;
+    public _renderer: GridRenderer;
 
     @Input()
     set rows(rows: number) {
@@ -40,7 +40,7 @@ export class NgxGridOverlayComponent {
         return this._renderer;
     }
 
-    private _highlight?: GridRectangle;
+    public _highlight?: GridRectangle;
     @Input()
     set highlight(highlight) {
         this._highlight = highlight;
@@ -54,7 +54,7 @@ export class NgxGridOverlayComponent {
         return this._highlight;
     }
 
-    private _showGrid: boolean = false;
+    public _showGrid: boolean = false;
     @Input()
     set showGrid(showGrid: boolean) {
         this._showGrid = showGrid;

@@ -1,13 +1,13 @@
 import {GridPoint} from "./GridPoint.model";
 import {GridRectangle} from "./GridRectangle.model";
 export class PathIterator {
-    private start: GridRectangle;
-    private topDelta: number;
-    private leftDelta: number;
-    private steps: number;
-    private currStep: number;
-    private currPos: GridPoint;
-    private nextPos: GridPoint;
+    public start: GridRectangle;
+    public topDelta: number;
+    public leftDelta: number;
+    public steps: number;
+    public currStep: number;
+    public currPos: GridPoint;
+    public nextPos: GridPoint;
 
     constructor(start: GridRectangle, end: GridRectangle) {
         this.start = start;

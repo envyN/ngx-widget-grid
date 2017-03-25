@@ -2,11 +2,11 @@ import {GridRectangle} from "./GridRectangle.model";
 import {Utils} from "../Utils";
 export class WidgetConfig {
     static widgetCount: number = 0;
-    private id: string;
-    private top: number = 0;
-    private left: number = 0;
-    private width: number = 0;
-    private height: number = 0;
+    public id: string;
+    public top: number = 0;
+    public left: number = 0;
+    public width: number = 0;
+    public height: number = 0;
 
     constructor(gridArea?: GridRectangle) {
         this.id = this.generateUID();
@@ -18,7 +18,7 @@ export class WidgetConfig {
         }
     }
 
-    private generateUID() {
+    public generateUID() {
         return 'vmDashboardWidget-' + ++WidgetConfig.widgetCount;
     }
 

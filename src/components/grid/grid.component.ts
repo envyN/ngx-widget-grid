@@ -36,7 +36,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         this.gridRenderer = new GridRenderer(this.grid);
     }
 
-    private _rows: number;
+    public _rows: number;
     @Input()
     set rows(rows) {
         this._rows = rows;
@@ -47,7 +47,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         return this._rows;
     }
 
-    private _columns: number;
+    public _columns: number;
     @Input()
     set columns(cols) {
         this._columns = cols;
@@ -60,7 +60,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
 
     @Input() showGrid: boolean = false;
 
-    private _highlightNextPosition: boolean = false;
+    public _highlightNextPosition: boolean = false;
 
     @Input()
     set highlightNextPosition(highlightNext: boolean) {
@@ -80,18 +80,18 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     public clickThrough: boolean = false;
 
     @Output('widgetPositionChange')
-    private widgetPositionChangeEmitter = new EventEmitter();
+    public widgetPositionChangeEmitter = new EventEmitter();
 
     @Output('gridFull')
-    private gridFullEmitter = new EventEmitter();
+    public gridFullEmitter = new EventEmitter();
 
     @ContentChildren(NgxWidgetComponent)
-    private widgetComponents: QueryList<NgxWidgetComponent>;
+    public widgetComponents: QueryList<NgxWidgetComponent>;
 
     public grid: Grid;
     public gridRenderer: GridRenderer;
     public highlightedArea: GridRectangle;
-    private gridAlreadyFull: boolean = false;
+    public gridAlreadyFull: boolean = false;
 
     hasWidget(widget: NgxWidgetComponent): boolean {
         return this.grid.hasWidget(widget.getConfig());

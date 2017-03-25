@@ -1,10 +1,10 @@
 import {CellSize} from "./CellSize.model";
 import {WidgetConfig} from "./WidgetConfig.model";
 export class Grid {
-    private _widgets: WidgetConfig[] = [];
-    private _rows: number = 3;
-    private _columns: number = 3;
-    private _cellSize: CellSize;
+    public _widgets: WidgetConfig[] = [];
+    public _rows: number = 3;
+    public _columns: number = 3;
+    public _cellSize: CellSize;
 
     constructor(rows?: number, columns?: number) {
         if (rows) {

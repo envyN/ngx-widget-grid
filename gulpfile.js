@@ -50,11 +50,11 @@ gulp.task('compile:sass', function () {
 });
 
 gulp.task("aot:copy", function () {
-    var claritySources = [
+    var sources = [
         staging + '/**/*.ts',
         staging + '/**/ *.html'];
 
-    return gulp.src(claritySources)
+    return gulp.src(sources)
         .pipe(inlineNg2Template({
             base: '/src/',
             useRelativePaths: true

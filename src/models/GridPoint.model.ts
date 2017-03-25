@@ -1,6 +1,6 @@
 export class GridPoint {
-    private _top: number;
-    private _left: number;
+    public _top: number;
+    public _left: number;
 
     constructor(top: number, left: number) {
         this._top = top;

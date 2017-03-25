@@ -4,7 +4,7 @@ import {Utils} from "../Utils";
 import {GridRectangle} from "./GridRectangle.model";
 import {WidgetConfig} from "./WidgetConfig.model";
 export class GridRenderer {
-    private _grid: Grid;
+    public _grid: Grid;
     set grid(grid: Grid) {
         this._grid = grid;
         this.positions = {};
@@ -19,9 +19,9 @@ export class GridRenderer {
         return this._grid;
     }
 
-    private positions: any = {};
-    private cachedNextPosition: GridRectangle;
-    private obstructions: any[] = [];
+    public positions: any = {};
+    public cachedNextPosition: GridRectangle;
+    public obstructions: any[] = [];
 
     constructor(grid: Grid) {
         this.grid = grid || new Grid();
@@ -113,7 +113,7 @@ export class GridRenderer {
         return this._isObstructed(i, j);
     }
 
-    private _isObstructed(i: number, j: number) {
+    public _isObstructed(i: number, j: number) {
         return this.obstructions[(i - 1) * this.grid.columns + (j - 1)] === 1;
     }
 
@@ -198,7 +198,7 @@ export class GridRenderer {
         return maxArea;
     }
 
-    private _findLargestEmptyAreaFrom(start: GridPoint) {
+    public _findLargestEmptyAreaFrom(start: GridPoint) {
         if (!Utils.isDefined(this.grid) || !Utils.isNumber(this.grid.columns) || !Utils.isNumber(this.grid.rows)) {
             return null;
         }

@@ -12,7 +12,7 @@ export class NgxWidgetComponent {
         this.widgetConfig = new WidgetConfig(this.position);
     }
 
-    private _position: GridRectangle;
+    public _position: GridRectangle;
     @Input()
     set position(position: GridRectangle) {
         this._position = position;
@@ -29,7 +29,7 @@ export class NgxWidgetComponent {
 
     @Input() movable: boolean = false;
 
-    private _resizable: boolean = false;
+    public _resizable: boolean = false;
     @Input()
     set resizable(resizable: boolean) {
         this._resizable = resizable;
@@ -44,7 +44,7 @@ export class NgxWidgetComponent {
 
     public allDirections: any = ResizeDirections;
 
-    private _resizeDirections: string[] = AllDirections;
+    public _resizeDirections: string[] = AllDirections;
     public isTopResizable: boolean = false;
     public isRightResizable: boolean = false;
     public isBottomResizable: boolean = false;
@@ -106,7 +106,7 @@ export class NgxWidgetComponent {
         return this._resizeDirections;
     }
 
-    private widgetConfig: WidgetConfig;
+    public widgetConfig: WidgetConfig;
 
 
     getConfig(): WidgetConfig {
