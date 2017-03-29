@@ -8,16 +8,17 @@
     "rxjs": "^5.2.0",
     "typescript": "^2.2.0",
     "typings": "^2.1.0",
-    "zone.js": "^0.7.7"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/common": "^2.4.9",
-    "@angular/compiler": "^2.4.9",
-    "@angular/compiler-cli": "^2.4.9",
-    "@angular/core": "^2.4.9",
-    "@angular/platform-browser": "^2.4.9",
-    "@angular/platform-browser-dynamic": "^2.4.9",
-    "@angular/platform-server": "^2.4.9",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/platform-server": "^4.0.0",
+    "@angular/animations": "^4.0.0",
     "@types/chai": "^3.4.33",
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.36",
@@ -43,8 +44,8 @@
     "typescript": "^2.2.1"
   },
   "peerDependencies": {
-    "@angular/common": "^2.4.9",
-    "@angular/core": "^2.4.9"
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0"
   },
   "scripts": {
     "prepublish": "gulp",
@@ -58,6 +59,7 @@
   "keywords": [
     "angular",
     "angular2",
+    "angular4",
     "widget",
     "widget-grid",
     "grid",
