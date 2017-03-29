@@ -140,5 +140,5 @@ Emitted whenever the position of a widget is changed. The event comes with an at
 ## Build
 Check out `/src` for the original source code.
 
-##License
+## License
 MIT
