@@ -43,6 +43,10 @@ export class Grid {
         }
     }
 
+    removeAll() {
+        this._widgets.splice(0);
+    }
+
     hasWidget(widget: WidgetConfig) {
         let widgetIndex = this._widgets.indexOf(widget);
         return widgetIndex > -1;

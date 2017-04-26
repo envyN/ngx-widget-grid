@@ -1,6 +1,6 @@
 import {
     Component, Input, Output, EventEmitter, ElementRef,
-    AfterViewInit, QueryList, ContentChildren, Renderer
+    AfterViewInit, QueryList, ContentChildren, Renderer2
 } from "@angular/core";
 import {Grid} from "../../models/Grid.model";
 import {NgxWidgetComponent} from "../widget/widget.component";
@@ -17,6 +17,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.refreshWidgets();
         this.widgetComponents.changes.subscribe(() => {
+            this.clearGrid();
             this.refreshWidgets();
         });
     }
@@ -31,7 +32,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         this.updateRendering();
     }
 
-    constructor(private el: ElementRef, private _renderer: Renderer) {
+    constructor(private el: ElementRef, private _renderer: Renderer2) {
         this.grid = new Grid(this.rows, this.columns);
         this.gridRenderer = new GridRenderer(this.grid);
     }
@@ -104,9 +105,9 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         }
     }
 
-    removeWidget(widget: NgxWidgetComponent) {
-        this.grid.remove(widget.getConfig());
-        this.updateRendering();
+
+    clearGrid() {
+        this.grid.removeAll();
     }
 
     updateGridSize() {
@@ -158,7 +159,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         this.gridRenderer.setWidgetPosition(config.getId(), newPosition);
         let widgetStyles: any = this.getWidgetStyle(widget);
         for (let style in widgetStyles) {
-            this._renderer.setElementStyle(el.nativeElement, style, widgetStyles[style]);
+            this._renderer.setStyle(el.nativeElement, style, widgetStyles[style]);
         }
         this.emitUpdatePosition(config);
         this.assessAvailableGridSpace();

@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, Output, EventEmitter} from "@angular/core";
+import {Component, Input, ElementRef, Output, EventEmitter, OnDestroy, Inject, forwardRef} from "@angular/core";
 import {WidgetConfig} from "../../models/WidgetConfig.model";
 import {GridRectangle} from "../../models/GridRectangle.model";
 import {ResizeDirections, AllDirections} from "../../Utils";
