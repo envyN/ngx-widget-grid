@@ -2,8 +2,8 @@
 
 A flexible grid layout for responsive dashboards
 
-Inspired from [**http://patbuergin.github.io/angular-widget-grid/**](http://patbuergin.github.io/angular-widget-grid/) and written as a pure Angular 2.x module.
-#### Demo: http://patbuergin.github.io/angular-widget-grid/
+This library got its inspiration from [*angular-widget-grid*](http://patbuergin.github.io/angular-widget-grid/) and has been written as a pure Angular 2.x [+] module.
+#### Demo: https://envyn.github.io/ngx-widget-grid
 
 ## Installation
 Install with [npm](http://www.npmjs.com/):
