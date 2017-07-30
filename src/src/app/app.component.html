@@ -1,14 +1,16 @@
-<header class="header-6">
-  <div class="branding">
-    <a class="nav-link">
-      <span class="title">Ngx-Widget-Grid</span>
-    </a>
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+      <a class="nav-link">
+        <span class="title">Ngx-Widget-Grid</span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <a [routerLink]="'demo'" class="nav-link nav-text" [routerLinkActive]="'active'">Demo</a>
+      <a [routerLink]="'docs'" class="nav-link nav-text" [routerLinkActive]="'active'">Docs</a>
+    </div>
+  </header>
+  <div class="content-container">
+    <router-outlet></router-outlet>
   </div>
-  <div class="header-nav">
-    <a [routerLink]="'demo'" class="nav-link nav-text" [routerLinkActive]="'active'">Demo</a>
-    <a [routerLink]="'docs'" class="nav-link nav-text" [routerLinkActive]="'active'">Docs</a>
-  </div>
-</header>
-<div class="body-container">
-  <router-outlet></router-outlet>
 </div>

@@ -294,7 +294,7 @@ exports = module.exports = __webpack_require__(27)();
 
 
 // module
-exports.push([module.i, ":host {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n  position: relative; }\n", ""]);
+exports.push([module.i, ":host {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n  position: relative; }\n  :host .content-area {\n    padding: 0; }\n", ""]);
 
 // exports
 
@@ -307,14 +307,14 @@ module.exports = module.exports.toString();
 /***/ 369:
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header-6\">\n  <div class=\"branding\">\n    <a class=\"nav-link\">\n      <span class=\"title\">Ngx-Widget-Grid</span>\n    </a>\n  </div>\n  <div class=\"header-nav\">\n    <a [routerLink]=\"'demo'\" class=\"nav-link nav-text\" [routerLinkActive]=\"'active'\">Demo</a>\n    <a [routerLink]=\"'docs'\" class=\"nav-link nav-text\" [routerLinkActive]=\"'active'\">Docs</a>\n  </div>\n</header>\n<div class=\"body-container\">\n  <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<div class=\"main-container\">\n  <header class=\"header-6\">\n    <div class=\"branding\">\n      <a class=\"nav-link\">\n        <span class=\"title\">Ngx-Widget-Grid</span>\n      </a>\n    </div>\n    <div class=\"header-nav\">\n      <a [routerLink]=\"'demo'\" class=\"nav-link nav-text\" [routerLinkActive]=\"'active'\">Demo</a>\n      <a [routerLink]=\"'docs'\" class=\"nav-link nav-text\" [routerLinkActive]=\"'active'\">Docs</a>\n    </div>\n  </header>\n  <div class=\"content-container\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
 
 /***/ }),
 
 /***/ 370:
 /***/ (function(module, exports) {
 
-module.exports = "<ngx-widget-grid [rows]=\"4\" [columns]=\"5\" [highlightNextPosition]=\"false\"\r\n                 [showGrid]=\"true\" (widgetPositionChange)=\"onWidgetChange($event)\">\r\n  <ngx-widget [(position)]=\"pos\"\r\n              [movable]=\"true\" [resizable]=\"true\">\r\n    <div style=\"height:100%;width:100%; display:flex;\">\r\n      <div style=\"height:100%;width:100%; padding:10px; background-color: rgb(140, 198, 0);\">\r\n      </div>\r\n    </div>\r\n  </ngx-widget>\r\n</ngx-widget-grid>\r\n"
+module.exports = "<div class=\"content-area\">\r\n  <ngx-widget-grid [rows]=\"4\" [columns]=\"5\" [highlightNextPosition]=\"false\"\r\n                   [showGrid]=\"true\" (widgetPositionChange)=\"onWidgetChange($event)\">\r\n    <ngx-widget [(position)]=\"pos\"\r\n                [movable]=\"true\" [resizable]=\"true\">\r\n      <div style=\"height:100%;width:100%; display:flex;\">\r\n        <div style=\"height:100%;width:100%; padding:10px; background-color: rgb(140, 198, 0);\">\r\n        </div>\r\n      </div>\r\n    </ngx-widget>\r\n  </ngx-widget-grid>\r\n</div>\r\n"
 
 /***/ }),
 
