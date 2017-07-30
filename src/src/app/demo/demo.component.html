@@ -1,0 +1,10 @@
+<ngx-widget-grid [rows]="4" [columns]="5" [highlightNextPosition]="false"
+                 [showGrid]="true" (widgetPositionChange)="onWidgetChange($event)">
+  <ngx-widget [(position)]="pos"
+              [movable]="true" [resizable]="true">
+    <div style="height:100%;width:100%; display:flex;">
+      <div style="height:100%;width:100%; padding:10px; background-color: rgb(140, 198, 0);">
+      </div>
+    </div>
+  </ngx-widget>
+</ngx-widget-grid>
