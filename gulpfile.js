@@ -1,22 +1,22 @@
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var autoprefixer = require('gulp-autoprefixer');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var util = require('gulp-util');
-var ts = require('typescript');
+var gulp              = require('gulp');
+var runSequence       = require('run-sequence');
+var autoprefixer      = require('gulp-autoprefixer');
+var sass              = require('gulp-sass');
+var sourcemaps        = require('gulp-sourcemaps');
+var util              = require('gulp-util');
+var ts                = require('typescript');
 var inlineNg2Template = require('gulp-inline-ng2-template');
-var gulpTs = require('gulp-typescript');
-var merge = require('merge2');
-var preprocess = require('gulp-preprocess');
-var del = require('del');
-var os = require('os');
+var gulpTs            = require('gulp-typescript');
+var merge             = require('merge2');
+var preprocess        = require('gulp-preprocess');
+var del               = require('del');
+var os                = require('os');
 
-var tsProject = gulpTs.createProject('./tsconfig.json', {declaration: true});
-var src = './src/';
-var buildDir = './build';
-var staging = './staging';
-var dist = './dist';
+var tsProject   = gulpTs.createProject('./tsconfig.json', {declaration: true});
+var src         = './src/';
+var buildDir    = './build';
+var staging     = './staging';
+var dist        = './dist';
 var aotCompiled = './aot-compiled';
 gulp.task('clean', function () {
     return del([buildDir, staging, dist, aotCompiled]);
@@ -34,7 +34,7 @@ gulp.task('copy:ts', function () {
 });
 
 gulp.task('compile:sass', function () {
-    var compressed = {outputStyle: 'compressed'};
+    var compressed   = {outputStyle: 'compressed'};
     var uncompressed = {sourceComments: 'map', errLogToConsole: true};
     return gulp.src(src + '**/*.scss', {base: src})
         .pipe(sass(compressed).on('error', sass.logError))
@@ -62,34 +62,34 @@ gulp.task("aot:copy", function () {
         .pipe(gulp.dest(dist));
 });
 
-gulp.task('aot:build', function (cb) {
-    var exec = require('child_process').exec;
-
-    var cmd = os.platform() === 'win32' ?
-        'node_modules\\.bin\\ngc' : './node_modules/.bin/ngc';
-
-    cmd += ' -p tsconfig-aot.json'; // use config for aot to compile
-
-    exec(cmd, function (err, stdout, stderr) {
+function execCallback(cb) {
+    return function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);
-    });
+    };
+}
+
+gulp.task('aot:build', function (cb) {
+    var exec = require('child_process').exec;
+
+    var cmdForBuild = os.platform() === 'win32' ?
+        'node_modules\\.bin\\ngc' : './node_modules/.bin/ngc';
+
+    cmdForBuild += ' -p tsconfig-aot.json'; // use config for aot to compile
+
+    exec(cmdForBuild, execCallback(cb));
 });
 
 gulp.task("aot:umd", function (cb) {
     var exec = require('child_process').exec;
 
-    var cmd = os.platform() === 'win32' ?
+    var cmdForUMD = os.platform() === 'win32' ?
         'node_modules\\.bin\\rollup' : './node_modules/.bin/rollup';
 
-    cmd += ' -c rollup.config.js'; // use config for rollup
+    cmdForUMD += ' -c rollup.config.js'; // use config for rollup
 
-    exec(cmd, function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err);
-    });
+    exec(cmdForUMD, execCallback(cb));
 });
 
 gulp.task('compile:ts', function () {
