@@ -30,13 +30,12 @@ export class Utils {
             } else {
                 return false;
             }
-        }
-        else {
+        }        else {
             return obj1 === obj2;
         }
     }
 }
-export const ResizeDirections = {
+export const RESIZE_DIRECTIONS = {
     topLeft: 'NW',
     top: 'N',
     topRight: 'NE',
@@ -46,13 +45,13 @@ export const ResizeDirections = {
     bottomLeft: 'SW',
     left: 'W'
 };
-export const AllDirections: string[] = [
-    ResizeDirections.bottom,
-    ResizeDirections.left,
-    ResizeDirections.right,
-    ResizeDirections.top,
-    ResizeDirections.bottomLeft,
-    ResizeDirections.bottomRight,
-    ResizeDirections.topLeft,
-    ResizeDirections.topRight
+export const ALL_DIRECTIONS: string[] = [
+    RESIZE_DIRECTIONS.bottom,
+    RESIZE_DIRECTIONS.left,
+    RESIZE_DIRECTIONS.right,
+    RESIZE_DIRECTIONS.top,
+    RESIZE_DIRECTIONS.bottomLeft,
+    RESIZE_DIRECTIONS.bottomRight,
+    RESIZE_DIRECTIONS.topLeft,
+    RESIZE_DIRECTIONS.topRight
 ];

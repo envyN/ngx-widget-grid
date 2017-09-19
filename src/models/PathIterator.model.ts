@@ -1,5 +1,5 @@
-import {GridPoint} from "./GridPoint.model";
-import {GridRectangle} from "./GridRectangle.model";
+import {GridPoint} from './GridPoint.model';
+import {GridRectangle} from './GridRectangle.model';
 export class PathIterator {
     public start: GridRectangle;
     public topDelta: number;

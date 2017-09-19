@@ -1,8 +1,9 @@
-import {Grid} from "./Grid.model";
-import {GridPoint} from "./GridPoint.model";
-import {Utils} from "../Utils";
-import {GridRectangle} from "./GridRectangle.model";
-import {WidgetConfig} from "./WidgetConfig.model";
+import { Grid } from './Grid.model';
+import { GridPoint } from './GridPoint.model';
+import { Utils } from '../Utils';
+import { GridRectangle } from './GridRectangle.model';
+import { WidgetConfig } from './WidgetConfig.model';
+
 export class GridRenderer {
     public _grid: Grid;
     set grid(grid: Grid) {
@@ -39,11 +40,13 @@ export class GridRenderer {
 
     getWidgetIdAt(i: number, j: number) {
         for (let widgetId in this.positions) {
-            let position = this.positions[widgetId];
+            if (this.positions.hasOwnProperty(widgetId)) {
+                let position = this.positions[widgetId];
 
-            if (position.top <= i && i <= (position.top + position.height - 1) &&
-                position.left <= j && j <= (position.left + position.width - 1)) {
-                return widgetId;
+                if (position.top <= i && i <= (position.top + position.height - 1) &&
+                    position.left <= j && j <= (position.left + position.width - 1)) {
+                    return widgetId;
+                }
             }
         }
         return null;
@@ -60,11 +63,11 @@ export class GridRenderer {
         }
 
         newPosition = new GridRectangle({
-            top: Utils.isNumber(newPosition.top) ? newPosition.top : currPosition.top,
-            left: Utils.isNumber(newPosition.left) ? newPosition.left : currPosition.left,
-            width: Utils.isNumber(newPosition.width) ? newPosition.width : currPosition.width,
-            height: Utils.isNumber(newPosition.height) ? newPosition.height : currPosition.height,
-        });
+                                            top: Utils.isNumber(newPosition.top) ? newPosition.top : currPosition.top,
+                                            left: Utils.isNumber(newPosition.left) ? newPosition.left : currPosition.left,
+                                            width: Utils.isNumber(newPosition.width) ? newPosition.width : currPosition.width,
+                                            height: Utils.isNumber(newPosition.height) ? newPosition.height : currPosition.height,
+                                        });
         this.positions[widgetId] = newPosition;
 
         this.setObstructionValues(this.positions[widgetId], 1);
@@ -72,8 +75,8 @@ export class GridRenderer {
     }
 
     hasSpaceLeft() {
-        for (let i = 0; i < this.obstructions.length; i++) {
-            if (!this.obstructions[i]) {
+        for (let obstruction of this.obstructions) {
+            if (!obstruction) {
                 return true;
             }
         }
@@ -153,7 +156,7 @@ export class GridRenderer {
         let render = this.positions[widgetId];
 
         if (!render) {
-            return {'display': 'none'};
+            return { display: 'none' };
         }
 
         return {
@@ -220,11 +223,11 @@ export class GridRenderer {
                 if (currSurfaceArea > maxSurfaceArea) {
                     maxSurfaceArea = currSurfaceArea;
                     maxArea = new GridRectangle({
-                        top: start.top,
-                        left: start.left,
-                        width: currWidth,
-                        height: currHeight
-                    });
+                                                    top: start.top,
+                                                    left: start.left,
+                                                    width: currWidth,
+                                                    height: currHeight
+                                                });
                 }
             }
         }

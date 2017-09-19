@@ -1,29 +1,21 @@
-import { Directive, Input, Renderer2, ElementRef, HostListener, forwardRef, Inject } from "@angular/core";
-import { NgxWidgetGridComponent } from "../components/grid/grid.component";
-import { NgxWidgetComponent } from "../components/widget/widget.component";
-import { GridRectangle } from "../models/GridRectangle.model";
-import { ResizeDirections } from "../Utils";
+import { Directive, ElementRef, forwardRef, HostListener, Inject, Input, Renderer2 } from '@angular/core';
+import { NgxWidgetGridComponent } from '../components/grid/grid.component';
+import { NgxWidgetComponent } from '../components/widget/widget.component';
+import { GridRectangle } from '../models/GridRectangle.model';
+import { RESIZE_DIRECTIONS } from '../Utils';
 
-const MIN_HEIGHT: number = 42;
-const MIN_WIDTH: number = 42;
+const MIN_HEIGHT = 42;
+const MIN_WIDTH = 42;
 
 @Directive({
                selector: '[ngx-widget-resizer]'
            })
 export class NgxWidgetResizerDirective {
-    constructor(private el: ElementRef,
-                private renderer: Renderer2,
-                @Inject(forwardRef(() => NgxWidgetGridComponent))
-                private gridCmp: NgxWidgetGridComponent,
-                @Inject(forwardRef(() => NgxWidgetComponent))
-                private widgetCmp: NgxWidgetComponent) {
-        this.parentContainer = this.el.nativeElement.parentElement;
-    }
 
-    public moveUpAllowed: boolean = false;
-    public moveDownAllowed: boolean = false;
-    public moveLeftAllowed: boolean = false;
-    public moveRightAllowed: boolean = false;
+    public moveUpAllowed = false;
+    public moveDownAllowed = false;
+    public moveLeftAllowed = false;
+    public moveRightAllowed = false;
     public _resizeDirection: string;
     @Input('ngx-widget-resizer')
     public set resizeDirection(dir: string) {
@@ -33,31 +25,31 @@ export class NgxWidgetResizerDirective {
         this.moveLeftAllowed = false;
         this.moveRightAllowed = false;
         switch (dir) {
-            case ResizeDirections.top:
+            case RESIZE_DIRECTIONS.top:
                 this.moveUpAllowed = true;
                 break;
-            case ResizeDirections.left:
+            case RESIZE_DIRECTIONS.left:
                 this.moveLeftAllowed = true;
                 break;
-            case ResizeDirections.bottom:
+            case RESIZE_DIRECTIONS.bottom:
                 this.moveDownAllowed = true;
                 break;
-            case ResizeDirections.right:
+            case RESIZE_DIRECTIONS.right:
                 this.moveRightAllowed = true;
                 break;
-            case ResizeDirections.topLeft:
+            case RESIZE_DIRECTIONS.topLeft:
                 this.moveUpAllowed = true;
                 this.moveLeftAllowed = true;
                 break;
-            case ResizeDirections.topRight:
+            case RESIZE_DIRECTIONS.topRight:
                 this.moveUpAllowed = true;
                 this.moveRightAllowed = true;
                 break;
-            case ResizeDirections.bottomLeft:
+            case RESIZE_DIRECTIONS.bottomLeft:
                 this.moveDownAllowed = true;
                 this.moveLeftAllowed = true;
                 break;
-            case ResizeDirections.bottomRight:
+            case RESIZE_DIRECTIONS.bottomRight:
                 this.moveDownAllowed = true;
                 this.moveRightAllowed = true;
                 break;
@@ -79,6 +71,14 @@ export class NgxWidgetResizerDirective {
     public startPosition: any;
     public enableDrag: string = null;
 
+    constructor(private el: ElementRef,
+                private renderer: Renderer2,
+                @Inject(forwardRef(() => NgxWidgetGridComponent))
+                private gridCmp: NgxWidgetGridComponent,
+                @Inject(forwardRef(() => NgxWidgetComponent))
+                private widgetCmp: NgxWidgetComponent) {
+        this.parentContainer = this.el.nativeElement.parentElement;
+    }
 
     @HostListener('mousedown', ['$event'])
     onDown(event: MouseEvent) {
@@ -119,24 +119,26 @@ export class NgxWidgetResizerDirective {
             event.preventDefault();
             let eventClientX = event.clientX,
                 eventClientY = event.clientY;
+            let gridDims = this.gridPositions;
+            let startRender = this.startRender;
             // normalize the drag position
-            let dragPositionX = Math.round(eventClientX) - this.gridPositions.left,
-                dragPositionY = Math.round(eventClientY) - this.gridPositions.top;
-
+            let dragPositionX = Math.round(eventClientX) - gridDims.left,
+                dragPositionY = Math.round(eventClientY) - gridDims.top;
+            let delta = this.delta;
             if (this.moveUpAllowed) {
-                this.delta.top = Math.min(Math.max(dragPositionY - this.draggerOffset.top, 0), this.gridPositions.height) - this.startRender.top;
-                this.delta.top = Math.min(this.delta.top, this.startRender.height - MIN_HEIGHT);
+                delta.top = Math.min(Math.max(dragPositionY - this.draggerOffset.top, 0), gridDims.height) - startRender.top;
+                delta.top = Math.min(delta.top, startRender.height - MIN_HEIGHT);
             } else if (this.moveDownAllowed) {
-                this.delta.bottom = this.startRender.bottom - Math.min(Math.max(dragPositionY - this.draggerOffset.bottom, 0), this.gridPositions.height);
-                this.delta.bottom = Math.min(this.delta.bottom, this.startRender.height - MIN_HEIGHT);
+                delta.bottom = startRender.bottom - Math.min(Math.max(dragPositionY - this.draggerOffset.bottom, 0), gridDims.height);
+                delta.bottom = Math.min(delta.bottom, startRender.height - MIN_HEIGHT);
             }
 
             if (this.moveLeftAllowed) {
-                this.delta.left = Math.min(Math.max(dragPositionX - this.draggerOffset.left, 0), this.gridPositions.width) - this.startRender.left;
-                this.delta.left = Math.min(this.delta.left, this.startRender.width - MIN_WIDTH);
+                delta.left = Math.min(Math.max(dragPositionX - this.draggerOffset.left, 0), gridDims.width) - startRender.left;
+                delta.left = Math.min(delta.left, startRender.width - MIN_WIDTH);
             } else if (this.moveRightAllowed) {
-                this.delta.right = this.startRender.right - Math.min(Math.max(dragPositionX - this.draggerOffset.right, 0), this.gridPositions.width);
-                this.delta.right = Math.min(this.delta.right, this.startRender.width - MIN_WIDTH);
+                delta.right = startRender.right - Math.min(Math.max(dragPositionX - this.draggerOffset.right, 0), gridDims.width);
+                delta.right = Math.min(delta.right, startRender.width - MIN_WIDTH);
             }
 
             let currentFinalPos = this.determineFinalPos();
@@ -171,11 +173,23 @@ export class NgxWidgetResizerDirective {
         }
     }
 
+    findCollision(start: number, end: number, val: number): boolean {
+        let foundCollision = false;
+        for (let i = start; i <= end; i++) {
+            if (this.gridCmp.isPointObstructed(val, i)) {
+                foundCollision = true;
+                break;
+            }
+        }
+        return foundCollision;
+    }
+
     determineFinalPos(): any {
         let finalPos: GridRectangle = new GridRectangle();
-
-        let requestedStartPoint = this.gridCmp.rasterizeCoords(this.startRender.left + this.delta.left + 1, this.startRender.top + this.delta.top + 1),
-            requestedEndPoint = this.gridCmp.rasterizeCoords(this.startRender.right - this.delta.right - 1, this.startRender.bottom - this.delta.bottom - 1);
+        let startRender = this.startRender;
+        let delta = this.delta;
+        let requestedStartPoint = this.gridCmp.rasterizeCoords(startRender.left + delta.left + 1, startRender.top + delta.top + 1),
+            requestedEndPoint = this.gridCmp.rasterizeCoords(startRender.right - delta.right - 1, startRender.bottom - delta.bottom - 1);
 
         let requestedPos = {
             top: requestedStartPoint.top,
@@ -185,19 +199,15 @@ export class NgxWidgetResizerDirective {
         };
 
         // determine a suitable final position (one that is not obstructed)
-        let foundCollision, i, j;
+        let foundCollision;
         if (this.moveUpAllowed && requestedPos.top < this.startPosition.top) {
             finalPos.top = this.startPosition.top;
 
             while (finalPos.top > requestedPos.top) {
                 // check whether adding another row would cause any conflict
-                foundCollision = false;
-                for (j = Math.max(this.startPosition.left, requestedPos.left); j <= Math.min(this.startPosition.right, requestedPos.right); j++) {
-                    if (this.gridCmp.isPointObstructed(finalPos.top - 1, j)) {
-                        foundCollision = true;
-                        break;
-                    }
-                }
+                let start = Math.max(this.startPosition.left, requestedPos.left);
+                let end = Math.min(this.startPosition.right, requestedPos.right);
+                foundCollision = this.findCollision(start, end, finalPos.top - 1);
                 if (foundCollision) {
                     break;
                 }
@@ -208,13 +218,9 @@ export class NgxWidgetResizerDirective {
             finalPos.bottom = this.startPosition.bottom;
 
             while (finalPos.bottom < requestedPos.bottom) {
-                foundCollision = false;
-                for (j = Math.max(this.startPosition.left, requestedPos.left); j <= Math.min(this.startPosition.right, requestedPos.right); j++) {
-                    if (this.gridCmp.isPointObstructed(finalPos.bottom + 1, j)) {
-                        foundCollision = true;
-                        break;
-                    }
-                }
+                let start = Math.max(this.startPosition.left, requestedPos.left);
+                let end = Math.min(this.startPosition.right, requestedPos.right);
+                foundCollision = this.findCollision(start, end, finalPos.bottom + 1);
                 if (foundCollision) {
                     break;
                 }
@@ -231,13 +237,7 @@ export class NgxWidgetResizerDirective {
 
             while (finalPos.left > requestedPos.left) {
                 // check whether adding another column would cause any conflict
-                foundCollision = false;
-                for (i = finalPos.top; i <= finalPos.bottom; i++) {
-                    if (this.gridCmp.isPointObstructed(i, finalPos.left - 1)) {
-                        foundCollision = true;
-                        break;
-                    }
-                }
+                foundCollision = this.findCollision(finalPos.top, finalPos.bottom, finalPos.left - 1);
                 if (foundCollision) {
                     break;
                 }
@@ -248,13 +248,7 @@ export class NgxWidgetResizerDirective {
             finalPos.right = this.startPosition.right;
 
             while (finalPos.right < requestedPos.right) {
-                foundCollision = false;
-                for (i = finalPos.top; i <= finalPos.bottom; i++) {
-                    if (this.gridCmp.isPointObstructed(i, finalPos.right + 1)) {
-                        foundCollision = true;
-                        break;
-                    }
-                }
+                foundCollision = this.findCollision(finalPos.top, finalPos.bottom, finalPos.right + 1);
                 if (foundCollision) {
                     break;
                 }

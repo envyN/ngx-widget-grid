@@ -1,17 +1,15 @@
-import {Component, Input} from "@angular/core";
-import {Utils} from "../../Utils";
-import {DomSanitizer, SafeStyle} from "@angular/platform-browser";
-import {GridRenderer} from "../../models/GridRenderer.model";
-import {GridRectangle} from "../../models/GridRectangle.model";
-@Component({
-    selector: 'ngx-grid-overlay',
-    styleUrls: ['./gridOverlay.component.css'],
-    templateUrl: './gridOverlay.component.html'
-})
-export class NgxGridOverlayComponent {
-    constructor(private sanitizer: DomSanitizer) {
+import { Component, Input } from '@angular/core';
+import { Utils } from '../../Utils';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { GridRenderer } from '../../models/GridRenderer.model';
+import { GridRectangle } from '../../models/GridRectangle.model';
 
-    }
+@Component({
+               selector: 'ngx-grid-overlay',
+               styleUrls: ['./gridOverlay.component.css'],
+               templateUrl: './gridOverlay.component.html'
+           })
+export class NgxGridOverlayComponent {
 
     public activeHighlight: any = null;
     public gridRows: any[] = [];
@@ -54,7 +52,7 @@ export class NgxGridOverlayComponent {
         return this._highlight;
     }
 
-    public _showGrid: boolean = false;
+    public _showGrid = false;
     @Input()
     set showGrid(showGrid: boolean) {
         this._showGrid = showGrid;
@@ -63,6 +61,9 @@ export class NgxGridOverlayComponent {
 
     get showGrid() {
         return this._showGrid;
+    }
+
+    constructor(private sanitizer: DomSanitizer) {
     }
 
     updateGridLines(renderer: GridRenderer, showGrid: boolean): void {
@@ -103,7 +104,7 @@ export class NgxGridOverlayComponent {
             rows = renderer.grid.rows,
             cols = renderer.grid.columns;
         for (let i = 1; i < rows; i += 2) {
-            let y: string, h: string, row: {y: SafeStyle, height: SafeStyle};
+            let y: string, h: string, row: { y: SafeStyle, height: SafeStyle };
             y = (i * cellHeight) + '%';
             h = 'calc(' + height + ' - 1px)';
             row = {
@@ -113,9 +114,8 @@ export class NgxGridOverlayComponent {
             this.gridRows.push(row);
         }
 
-
         for (let i = 1; i < cols; i += 2) {
-            let x: string, w: string, col: {x: SafeStyle, width: SafeStyle};
+            let x: string, w: string, col: { x: SafeStyle, width: SafeStyle };
             x = (i * cellWidth) + '%';
             w = 'calc(' + width + ' - 1px)';
             col = {

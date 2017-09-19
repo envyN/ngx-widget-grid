@@ -1,41 +1,20 @@
 import {
-    Component, Input, Output, EventEmitter, ElementRef,
-    AfterViewInit, QueryList, ContentChildren, Renderer2
-} from "@angular/core";
-import {Grid} from "../../models/Grid.model";
-import {NgxWidgetComponent} from "../widget/widget.component";
-import {GridRenderer} from "../../models/GridRenderer.model";
-import {GridPoint} from "../../models/GridPoint.model";
-import {WidgetConfig} from "../../models/WidgetConfig.model";
-import {GridRectangle} from "../../models/GridRectangle.model";
+    AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter,
+    Input, Output, QueryList, Renderer2
+} from '@angular/core';
+import { Grid } from '../../models/Grid.model';
+import { NgxWidgetComponent } from '../widget/widget.component';
+import { GridRenderer } from '../../models/GridRenderer.model';
+import { GridPoint } from '../../models/GridPoint.model';
+import { WidgetConfig } from '../../models/WidgetConfig.model';
+import { GridRectangle } from '../../models/GridRectangle.model';
+
 @Component({
-    selector: 'ngx-widget-grid',
-    styleUrls: ['./grid.component.css'],
-    templateUrl: './grid.component.html'
-})
+               selector: 'ngx-widget-grid',
+               styleUrls: ['./grid.component.css'],
+               templateUrl: './grid.component.html'
+           })
 export class NgxWidgetGridComponent implements AfterViewInit {
-    ngAfterViewInit(): void {
-        this.refreshWidgets();
-        this.widgetComponents.changes.subscribe(() => {
-            this.clearGrid();
-            this.refreshWidgets();
-        });
-    }
-
-    refreshWidgets() {
-        this.widgetComponents.forEach((widget: NgxWidgetComponent) => {
-            if (!this.hasWidget(widget)) {
-                this.addWidget(widget, true);
-            } else {
-            }
-        });
-        this.updateRendering();
-    }
-
-    constructor(private el: ElementRef, private _renderer: Renderer2) {
-        this.grid = new Grid(this.rows, this.columns);
-        this.gridRenderer = new GridRenderer(this.grid);
-    }
 
     public _rows: number;
     @Input()
@@ -59,9 +38,9 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         return this._columns;
     }
 
-    @Input() showGrid: boolean = false;
+    @Input() showGrid = false;
 
-    public _highlightNextPosition: boolean = false;
+    public _highlightNextPosition = false;
 
     @Input()
     set highlightNextPosition(highlightNext: boolean) {
@@ -78,7 +57,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     }
 
     @Input()
-    public clickThrough: boolean = false;
+    public clickThrough = false;
 
     @Output('widgetPositionChange')
     public widgetPositionChangeEmitter = new EventEmitter();
@@ -92,7 +71,30 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     public grid: Grid;
     public gridRenderer: GridRenderer;
     public highlightedArea: GridRectangle;
-    public gridAlreadyFull: boolean = false;
+    public gridAlreadyFull = false;
+
+    ngAfterViewInit(): void {
+        this.refreshWidgets();
+        this.widgetComponents.changes.subscribe(() => {
+            this.clearGrid();
+            this.refreshWidgets();
+        });
+    }
+
+    refreshWidgets() {
+        this.widgetComponents.forEach((widget: NgxWidgetComponent) => {
+            if (!this.hasWidget(widget)) {
+                this.addWidget(widget, true);
+            } else {
+            }
+        });
+        this.updateRendering();
+    }
+
+    constructor(private el: ElementRef, private _renderer: Renderer2) {
+        this.grid = new Grid(this.rows, this.columns);
+        this.gridRenderer = new GridRenderer(this.grid);
+    }
 
     hasWidget(widget: NgxWidgetComponent): boolean {
         return this.grid.hasWidget(widget.getConfig());
@@ -104,7 +106,6 @@ export class NgxWidgetGridComponent implements AfterViewInit {
             this.updateRendering();
         }
     }
-
 
     clearGrid() {
         this.grid.removeAll();
@@ -122,7 +123,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
     updateRendering() {
         this.gridRenderer.render(this.grid, this.emitUpdatePosition.bind(this));
         this.updateNextPositionHighlight();
-        //TODO: retrieve all widgets and call their updateRendering
+        // TODO: retrieve all widgets and call their updateRendering
         if (this.widgetComponents) {
             this.widgetComponents.forEach((widget: NgxWidgetComponent) => {
                 this.updateWidget(widget);
@@ -139,13 +140,13 @@ export class NgxWidgetGridComponent implements AfterViewInit {
             let doc = gridContainer.ownerDocument;
             let docElem = doc.documentElement;
             return new GridRectangle({
-                top: rect.top + window.pageYOffset - docElem.clientTop,
-                left: rect.left + window.pageXOffset - docElem.clientLeft,
-                height: rect.height,
-                width: rect.width
-            });
+                                         top: rect.top + window.pageYOffset - docElem.clientTop,
+                                         left: rect.left + window.pageXOffset - docElem.clientLeft,
+                                         height: rect.height,
+                                         width: rect.width
+                                     });
         }
-        return new GridRectangle({top: 0, left: 0, height: 0, width: 0});
+        return new GridRectangle({ top: 0, left: 0, height: 0, width: 0 });
     }
 
     rasterizeCoords(x: number, y: number): GridPoint {
@@ -159,7 +160,9 @@ export class NgxWidgetGridComponent implements AfterViewInit {
         this.gridRenderer.setWidgetPosition(config.getId(), newPosition);
         let widgetStyles: any = this.getWidgetStyle(widget);
         for (let style in widgetStyles) {
-            this._renderer.setStyle(el.nativeElement, style, widgetStyles[style]);
+            if (widgetStyles.hasOwnProperty(style)) {
+                this._renderer.setStyle(el.nativeElement, style, widgetStyles[style]);
+            }
         }
         this.emitUpdatePosition(config);
         this.assessAvailableGridSpace();
@@ -211,9 +214,9 @@ export class NgxWidgetGridComponent implements AfterViewInit {
 
     emitUpdatePosition(widget: WidgetConfig) {
         this.widgetPositionChangeEmitter.emit({
-            index: this.getWidgetIndex(widget),
-            newPosition: widget.position
-        });
+                                                  index: this.getWidgetIndex(widget),
+                                                  newPosition: widget.position
+                                              });
     }
 
     getWidgetIndex(widgetConfig: WidgetConfig) {

@@ -1,16 +1,14 @@
-import {Component, Input, ElementRef, Output, EventEmitter, OnDestroy, Inject, forwardRef} from "@angular/core";
-import {WidgetConfig} from "../../models/WidgetConfig.model";
-import {GridRectangle} from "../../models/GridRectangle.model";
-import {ResizeDirections, AllDirections} from "../../Utils";
+import { Component, ElementRef, EventEmitter, forwardRef, Inject, Input, OnDestroy, Output } from '@angular/core';
+import { WidgetConfig } from '../../models/WidgetConfig.model';
+import { GridRectangle } from '../../models/GridRectangle.model';
+import { ALL_DIRECTIONS, RESIZE_DIRECTIONS } from '../../Utils';
+
 @Component({
-    selector: 'ngx-widget',
-    styleUrls: ['./widget.component.css'],
-    templateUrl: './widget.component.html'
-})
+               selector: 'ngx-widget',
+               styleUrls: ['./widget.component.css'],
+               templateUrl: './widget.component.html'
+           })
 export class NgxWidgetComponent {
-    constructor(private elRef: ElementRef) {
-        this.widgetConfig = new WidgetConfig(this.position);
-    }
 
     public _position: GridRectangle;
     @Input()
@@ -27,9 +25,9 @@ export class NgxWidgetComponent {
     @Output()
     positionChange: EventEmitter<GridRectangle> = new EventEmitter();
 
-    @Input() movable: boolean = false;
+    @Input() movable = false;
 
-    public _resizable: boolean = false;
+    public _resizable = false;
     @Input()
     set resizable(resizable: boolean) {
         this._resizable = resizable;
@@ -42,24 +40,34 @@ export class NgxWidgetComponent {
         return this._resizable;
     }
 
-    public allDirections: any = ResizeDirections;
+    public allDirections: any = RESIZE_DIRECTIONS;
 
-    public _resizeDirections: string[] = AllDirections;
-    public isTopResizable: boolean = false;
-    public isRightResizable: boolean = false;
-    public isBottomResizable: boolean = false;
-    public isLeftResizable: boolean = false;
-    public isTopRightResizable: boolean = false;
-    public isTopLeftResizable: boolean = false;
-    public isBottomRightResizable: boolean = false;
-    public isBottomLeftResizable: boolean = false;
+    public _resizeDirections: string[] = ALL_DIRECTIONS;
+    public isTopResizable = false;
+    public isRightResizable = false;
+    public isBottomResizable = false;
+    public isLeftResizable = false;
+    public isTopRightResizable = false;
+    public isTopLeftResizable = false;
+    public isBottomRightResizable = false;
+    public isBottomLeftResizable = false;
 
     @Input()
     set resizeDirections(dirs: string[]) {
         this._resizeDirections = dirs.filter((dir: string) => {
-            return AllDirections.indexOf(dir.toUpperCase()) !== -1;
+            return ALL_DIRECTIONS.indexOf(dir.toUpperCase()) !== -1;
         });
         this.setResizeDirections();
+    }
+
+    get resizeDirections() {
+        return this._resizeDirections;
+    }
+
+    public widgetConfig: WidgetConfig;
+
+    constructor(private elRef: ElementRef) {
+        this.widgetConfig = new WidgetConfig(this.position);
     }
 
     setResizeDirections() {
@@ -73,41 +81,34 @@ export class NgxWidgetComponent {
         this.isBottomLeftResizable = false;
         this._resizeDirections.forEach((dir) => {
             switch (dir) {
-                case ResizeDirections.top:
+                case RESIZE_DIRECTIONS.top:
                     this.isTopResizable = true;
                     break;
-                case ResizeDirections.left:
+                case RESIZE_DIRECTIONS.left:
                     this.isLeftResizable = true;
                     break;
-                case ResizeDirections.bottom:
+                case RESIZE_DIRECTIONS.bottom:
                     this.isBottomResizable = true;
                     break;
-                case ResizeDirections.right:
+                case RESIZE_DIRECTIONS.right:
                     this.isRightResizable = true;
                     break;
-                case ResizeDirections.topLeft:
+                case RESIZE_DIRECTIONS.topLeft:
                     this.isTopLeftResizable = true;
                     break;
-                case ResizeDirections.topRight:
+                case RESIZE_DIRECTIONS.topRight:
                     this.isTopRightResizable = true;
                     break;
-                case ResizeDirections.bottomLeft:
+                case RESIZE_DIRECTIONS.bottomLeft:
                     this.isBottomLeftResizable = true;
                     break;
-                case ResizeDirections.bottomRight:
+                case RESIZE_DIRECTIONS.bottomRight:
                     this.isBottomRightResizable = true;
                     break;
                 default:
             }
         });
     }
-
-    get resizeDirections() {
-        return this._resizeDirections;
-    }
-
-    public widgetConfig: WidgetConfig;
-
 
     getConfig(): WidgetConfig {
         return this.widgetConfig;

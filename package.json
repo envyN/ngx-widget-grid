@@ -11,6 +11,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
@@ -18,13 +19,13 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/platform-server": "^4.0.0",
-    "@angular/animations": "^4.0.0",
     "@types/chai": "^3.4.33",
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.36",
     "@types/sinon": "^1.16.30",
     "@types/sinon-chai": "^2.7.27",
     "@types/webpack": "^2.2.4",
+    "codelyzer": "^3.2.0",
     "core-js": "^2.4.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
@@ -48,9 +49,10 @@
     "@angular/core": "^4.0.0"
   },
   "scripts": {
-    "prepublish": "gulp",
+    "prepublish": "npm run lint && gulp",
     "postversion": "git push && git push --tags",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint -c tslint.json --fix=true --type-check=true 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,9 @@
-import {CellSize} from "./CellSize.model";
-import {WidgetConfig} from "./WidgetConfig.model";
+import {CellSize} from './CellSize.model';
+import {WidgetConfig} from './WidgetConfig.model';
 export class Grid {
     public _widgets: WidgetConfig[] = [];
-    public _rows: number = 3;
-    public _columns: number = 3;
+    public _rows = 3;
+    public _columns = 3;
     public _cellSize: CellSize;
 
     constructor(rows?: number, columns?: number) {

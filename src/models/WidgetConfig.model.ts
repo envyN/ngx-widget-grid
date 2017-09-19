@@ -1,12 +1,12 @@
-import {GridRectangle} from "./GridRectangle.model";
-import {Utils} from "../Utils";
+import {GridRectangle} from './GridRectangle.model';
+import {Utils} from '../Utils';
 export class WidgetConfig {
-    static widgetCount: number = 0;
+    static widgetCount = 0;
     public id: string;
-    public top: number = 0;
-    public left: number = 0;
-    public width: number = 0;
-    public height: number = 0;
+    public top = 0;
+    public left = 0;
+    public width = 0;
+    public height = 0;
 
     constructor(gridArea?: GridRectangle) {
         this.id = this.generateUID();
