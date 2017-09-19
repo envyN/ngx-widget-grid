@@ -1,6 +1,6 @@
 {
   "name": "ngx-widget-grid",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "An angular 2.0+ module for widget-grids to be used for dashboard",
   "main": "index.js",
   "dependencies": {
