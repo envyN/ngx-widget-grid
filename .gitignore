@@ -15,3 +15,7 @@ src/**/*.js
 
 /dist
 *.metadata.json
+
+# folders to exclude
+aot-compiled
+staging

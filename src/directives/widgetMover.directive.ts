@@ -1,4 +1,4 @@
-import {Directive, Renderer, ElementRef, Inject, forwardRef, HostListener} from "@angular/core";
+import {Directive, Renderer2, ElementRef, Inject, forwardRef, HostListener} from "@angular/core";
 import {NgxWidgetGridComponent} from "../components/grid/grid.component";
 import {GridRectangle} from "../models/GridRectangle.model";
 import {NgxWidgetComponent} from "../components/widget/widget.component";
@@ -15,7 +15,7 @@ export interface RectanglePixels {
 export class NgxWidgetMoverDirective {
 
     constructor(private el: ElementRef,
-                private renderer: Renderer,
+                private renderer: Renderer2,
                 @Inject(forwardRef(() => NgxWidgetGridComponent))
                 private gridCmp: NgxWidgetGridComponent,
                 @Inject(forwardRef(() => NgxWidgetComponent))
@@ -35,7 +35,7 @@ export class NgxWidgetMoverDirective {
     @HostListener('mousedown', ['$event'])
     onDown(event: MouseEvent) {
         event.preventDefault();
-        this.renderer.setElementClass(this.widgetCmp.getEl().nativeElement, 'wg-moving', true);
+        this.renderer.addClass(this.widgetCmp.getEl().nativeElement, 'wg-moving');
         this.mouseDownPosition = {x: event.clientX, y: event.clientY};
         let widgetContainer = this.widgetCmp.getEl().nativeElement;
 
@@ -72,7 +72,7 @@ export class NgxWidgetMoverDirective {
 
             let finalPos = this.determineFinalPos(this.startPosition, this.desiredPosition, this.startRender, this.cellHeight, this.cellWidth);
             this.gridCmp.resetHighlights();
-            this.renderer.setElementClass(this.widgetCmp.getEl().nativeElement, 'wg-moving', false);
+            this.renderer.removeClass(this.widgetCmp.getEl().nativeElement, 'wg-moving');
             this.widgetCmp.position = finalPos;
             this.gridCmp.updateWidget(this.widgetCmp);
             this.enableDrag = null;
@@ -95,8 +95,8 @@ export class NgxWidgetMoverDirective {
             let currentFinalPos: GridRectangle = this.determineFinalPos(this.startPosition, this.desiredPosition, this.startRender, this.cellHeight, this.cellWidth);
             this.gridCmp.highlightArea(currentFinalPos);
 
-            this.renderer.setElementStyle(this.widgetCmp.getEl().nativeElement, 'top', this.desiredPosition.top + 'px');
-            this.renderer.setElementStyle(this.widgetCmp.getEl().nativeElement, 'left', this.desiredPosition.left + 'px');
+            this.renderer.setStyle(this.widgetCmp.getEl().nativeElement, 'top', this.desiredPosition.top + 'px');
+            this.renderer.setStyle(this.widgetCmp.getEl().nativeElement, 'left', this.desiredPosition.left + 'px');
 
         }
     }

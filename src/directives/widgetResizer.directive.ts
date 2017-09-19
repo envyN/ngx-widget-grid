@@ -84,8 +84,8 @@ export class NgxWidgetResizerDirective {
     onDown(event: MouseEvent) {
         event.preventDefault();
         this.enableDrag = this.widgetCmp.getConfig().getId();
-        this.renderer.setElementClass(this.widgetCmp.getEl().nativeElement, 'wg-resizing', true);
-        this.renderer.setElementClass(this.el.nativeElement, 'dragging', true);
+        this.renderer.addClass(this.widgetCmp.getEl().nativeElement, 'wg-resizing');
+        this.renderer.addClass(this.el.nativeElement, 'dragging');
         this.startPosition = this.gridCmp.getWidgetPosition(this.widgetCmp);
         this.startPosition.bottom = this.startPosition.top + this.startPosition.height - 1;
         this.startPosition.right = this.startPosition.left + this.startPosition.width - 1;
@@ -142,10 +142,10 @@ export class NgxWidgetResizerDirective {
             let currentFinalPos = this.determineFinalPos();
             this.gridCmp.highlightArea(currentFinalPos);
 
-            this.renderer.setElementStyle(this.parentContainer, 'top', this.delta.top + 'px');
-            this.renderer.setElementStyle(this.parentContainer, 'left', this.delta.left + 'px');
-            this.renderer.setElementStyle(this.parentContainer, 'bottom', this.delta.bottom + 'px');
-            this.renderer.setElementStyle(this.parentContainer, 'right', this.delta.right + 'px');
+            this.renderer.setStyle(this.parentContainer, 'top', this.delta.top + 'px');
+            this.renderer.setStyle(this.parentContainer, 'left', this.delta.left + 'px');
+            this.renderer.setStyle(this.parentContainer, 'bottom', this.delta.bottom + 'px');
+            this.renderer.setStyle(this.parentContainer, 'right', this.delta.right + 'px');
         }
     }
 
@@ -154,20 +154,20 @@ export class NgxWidgetResizerDirective {
         if (this.enableDrag === this.widgetCmp.getConfig().getId()) {
             event.preventDefault();
             this.el.nativeElement.setAttribute('draggable', false);
-            this.renderer.setElementClass(this.el.nativeElement, 'dragging', false);
-            this.renderer.setElementClass(this.widgetCmp.getEl().nativeElement, 'wg-resizing', false);
+            this.renderer.removeClass(this.el.nativeElement, 'dragging');
+            this.renderer.removeClass(this.widgetCmp.getEl().nativeElement, 'wg-resizing');
             this.enableDrag = null;
             this.widgetCmp.position = this.determineFinalPos();
             this.gridCmp.updateWidget(this.widgetCmp);
             this.gridCmp.resetHighlights();
 
             // reset style
-            this.renderer.setElementClass(this.widgetCmp.getEl().nativeElement, 'wg-resizing', false);
-            this.renderer.setElementClass(this.el.nativeElement, 'dragging', false);
-            this.renderer.setElementStyle(this.parentContainer, 'top', '');
-            this.renderer.setElementStyle(this.parentContainer, 'left', '');
-            this.renderer.setElementStyle(this.parentContainer, 'bottom', '');
-            this.renderer.setElementStyle(this.parentContainer, 'right', '');
+            this.renderer.removeClass(this.widgetCmp.getEl().nativeElement, 'wg-resizing');
+            this.renderer.removeClass(this.el.nativeElement, 'dragging');
+            this.renderer.setStyle(this.parentContainer, 'top', '');
+            this.renderer.setStyle(this.parentContainer, 'left', '');
+            this.renderer.setStyle(this.parentContainer, 'bottom', '');
+            this.renderer.setStyle(this.parentContainer, 'right', '');
         }
     }
 
