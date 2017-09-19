@@ -127,23 +127,18 @@ export class NgxWidgetMoverDirective {
         return (val % max) > (max / 2) ? val + Math.floor(max) : val;
     }
 
-    determineFinalPos(startPosition: GridRectangle,
-                      desiredPosition: GridRectangle,
-                      startRender: RectanglePixels,
-                      cellHeight: number,
-                      cellWidth: number): GridRectangle {
-        if (startRender.top === desiredPosition.top && startRender.left === desiredPosition.left) {
-            return startPosition;
+    determineFinalPos(startPos: GridRectangle, desiredPos: GridRectangle, startRender: RectanglePixels,
+                      cellHt: number, cellWd: number): GridRectangle {
+        if (startRender.top === desiredPos.top && startRender.left === desiredPos.left) {
+            return startPos;
         }
 
-        let anchorTop = this.getAnchor(desiredPosition.top, cellHeight),
-            anchorLeft = this.getAnchor(desiredPosition.left, cellWidth);
+        let anchorTop = this.getAnchor(desiredPos.top, cellHt), anchorLeft = this.getAnchor(desiredPos.left, cellWd);
 
-        let movedDown = anchorTop >= startRender.top,
-            movedRight = anchorLeft >= startRender.left;
+        let movedDown = anchorTop >= startRender.top, movedRight = anchorLeft >= startRender.left;
 
         let desiredFinalPosition: any = this.gridCmp.rasterizeCoords(anchorLeft, anchorTop);
-        let path = new PathIterator(desiredFinalPosition, startPosition);
+        let path = new PathIterator(desiredFinalPosition, startPos);
 
         while (path.hasNext()) {
             let currPos = path.next();
@@ -151,22 +146,20 @@ export class NgxWidgetMoverDirective {
             let targetArea = new GridRectangle({
                                                    top: currPos.top,
                                                    left: currPos.left,
-                                                   height: startPosition.height,
-                                                   width: startPosition.width
+                                                   height: startPos.height,
+                                                   width: startPos.width
                                                });
 
             let options: any = {
-                excludedArea: startPosition,
+                excludedArea: startPos,
                 fromBottom: movedDown,
                 fromRight: movedRight
             };
 
             if (!this.gridCmp.isAreaObstructed(targetArea, options)) {
                 // try to get closer to the desired position by leaving the original path
-                let top = targetArea.top,
-                    left = targetArea.left,
-                    height = targetArea.height,
-                    width = targetArea.width;
+                let top = targetArea.top, left = targetArea.left,
+                    height = targetArea.height, width = targetArea.width;
                 if (desiredFinalPosition.top < top) {
                     let checkRect = new GridRectangle({ top: top - 1, left, height, width }),
                         isRectVacant = !this.gridCmp.isAreaObstructed(checkRect, options);
@@ -197,6 +190,6 @@ export class NgxWidgetMoverDirective {
                 return new GridRectangle(targetArea);
             }
         }
-        return new GridRectangle(startPosition);
+        return new GridRectangle(startPos);
     }
 }

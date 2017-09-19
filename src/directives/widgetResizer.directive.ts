@@ -200,13 +200,13 @@ export class NgxWidgetResizerDirective {
 
         // determine a suitable final position (one that is not obstructed)
         let foundCollision;
+        let start = Math.max(this.startPosition.left, requestedPos.left);
+        let end = Math.min(this.startPosition.right, requestedPos.right);
         if (this.moveUpAllowed && requestedPos.top < this.startPosition.top) {
             finalPos.top = this.startPosition.top;
 
             while (finalPos.top > requestedPos.top) {
                 // check whether adding another row would cause any conflict
-                let start = Math.max(this.startPosition.left, requestedPos.left);
-                let end = Math.min(this.startPosition.right, requestedPos.right);
                 foundCollision = this.findCollision(start, end, finalPos.top - 1);
                 if (foundCollision) {
                     break;
@@ -218,8 +218,6 @@ export class NgxWidgetResizerDirective {
             finalPos.bottom = this.startPosition.bottom;
 
             while (finalPos.bottom < requestedPos.bottom) {
-                let start = Math.max(this.startPosition.left, requestedPos.left);
-                let end = Math.min(this.startPosition.right, requestedPos.right);
                 foundCollision = this.findCollision(start, end, finalPos.bottom + 1);
                 if (foundCollision) {
                     break;
