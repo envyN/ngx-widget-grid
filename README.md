@@ -1,4 +1,5 @@
 # ngx-widget-grid
+[![codebeat badge](https://codebeat.co/badges/8693fc3e-1013-4d82-a121-9a854c1da50b)](https://codebeat.co/projects/github-com-envyn-ngx-widget-grid-master)
 
 A flexible grid layout for responsive dashboards
 
