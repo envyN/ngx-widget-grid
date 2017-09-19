@@ -173,10 +173,12 @@ export class NgxWidgetResizerDirective {
         }
     }
 
-    findCollision(start: number, end: number, val: number): boolean {
+    findCollision(start: number, end: number, val: number, reverse = false): boolean {
         let foundCollision = false;
         for (let i = start; i <= end; i++) {
-            if (this.gridCmp.isPointObstructed(val, i)) {
+            let obstructionChecker = this.gridCmp.isPointObstructed,
+                checker = reverse ? obstructionChecker(i, val) : obstructionChecker(val, i);
+            if (checker) {
                 foundCollision = true;
                 break;
             }
@@ -235,7 +237,7 @@ export class NgxWidgetResizerDirective {
 
             while (finalPos.left > requestedPos.left) {
                 // check whether adding another column would cause any conflict
-                foundCollision = this.findCollision(finalPos.top, finalPos.bottom, finalPos.left - 1);
+                foundCollision = this.findCollision(finalPos.top, finalPos.bottom, finalPos.left - 1, true);
                 if (foundCollision) {
                     break;
                 }
@@ -246,7 +248,7 @@ export class NgxWidgetResizerDirective {
             finalPos.right = this.startPosition.right;
 
             while (finalPos.right < requestedPos.right) {
-                foundCollision = this.findCollision(finalPos.top, finalPos.bottom, finalPos.right + 1);
+                foundCollision = this.findCollision(finalPos.top, finalPos.bottom, finalPos.right + 1, true);
                 if (foundCollision) {
                     break;
                 }
