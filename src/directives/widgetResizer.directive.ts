@@ -1,18 +1,18 @@
-import {Directive, Input, Renderer, ElementRef, HostListener, forwardRef, Inject} from "@angular/core";
-import {NgxWidgetGridComponent} from "../components/grid/grid.component";
-import {NgxWidgetComponent} from "../components/widget/widget.component";
-import {GridRectangle} from "../models/GridRectangle.model";
-import {RectanglePixels} from "./widgetMover.directive";
-import {ResizeDirections} from "../Utils";
+import { Directive, Input, Renderer2, ElementRef, HostListener, forwardRef, Inject } from "@angular/core";
+import { NgxWidgetGridComponent } from "../components/grid/grid.component";
+import { NgxWidgetComponent } from "../components/widget/widget.component";
+import { GridRectangle } from "../models/GridRectangle.model";
+import { ResizeDirections } from "../Utils";
 
 const MIN_HEIGHT: number = 42;
 const MIN_WIDTH: number = 42;
+
 @Directive({
-    selector: '[ngx-widget-resizer]'
-})
+               selector: '[ngx-widget-resizer]'
+           })
 export class NgxWidgetResizerDirective {
     constructor(private el: ElementRef,
-                private renderer: Renderer,
+                private renderer: Renderer2,
                 @Inject(forwardRef(() => NgxWidgetGridComponent))
                 private gridCmp: NgxWidgetGridComponent,
                 @Inject(forwardRef(() => NgxWidgetComponent))
@@ -74,8 +74,8 @@ export class NgxWidgetResizerDirective {
     public cellWidth: number;
     public startRender: any;
     public gridPositions: GridRectangle;
-    public delta: {top: number, right: number, bottom: number, left: number};
-    public draggerOffset: {top: number, right: number, bottom: number, left: number};
+    public delta: { top: number, right: number, bottom: number, left: number };
+    public draggerOffset: { top: number, right: number, bottom: number, left: number };
     public startPosition: any;
     public enableDrag: string = null;
 
@@ -102,7 +102,7 @@ export class NgxWidgetResizerDirective {
         let eventOffsetX = event.offsetX || event.layerX;
         let eventOffsetY = event.offsetY || event.layerY;
 
-        this.delta = {top: 0, right: 0, bottom: 0, left: 0};
+        this.delta = { top: 0, right: 0, bottom: 0, left: 0 };
         this.draggerOffset = {
             top: eventOffsetY,
             left: eventOffsetX,
@@ -115,8 +115,8 @@ export class NgxWidgetResizerDirective {
 
     @HostListener('window:mousemove', ['$event'])
     onMove(event: MouseEvent) {
-        event.preventDefault();
         if (this.enableDrag === this.widgetCmp.getConfig().getId()) {
+            event.preventDefault();
             let eventClientX = event.clientX,
                 eventClientY = event.clientY;
             // normalize the drag position
@@ -151,8 +151,8 @@ export class NgxWidgetResizerDirective {
 
     @HostListener('window:mouseup', ['$event'])
     onUp(event: MouseEvent) {
-        event.preventDefault();
         if (this.enableDrag === this.widgetCmp.getConfig().getId()) {
+            event.preventDefault();
             this.el.nativeElement.setAttribute('draggable', false);
             this.renderer.setElementClass(this.el.nativeElement, 'dragging', false);
             this.renderer.setElementClass(this.widgetCmp.getEl().nativeElement, 'wg-resizing', false);
