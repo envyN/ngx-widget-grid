@@ -176,8 +176,7 @@ export class NgxWidgetResizerDirective {
     findCollision(start: number, end: number, val: number, reverse = false): boolean {
         let foundCollision = false;
         for (let i = start; i <= end; i++) {
-            let obstructionChecker = this.gridCmp.isPointObstructed,
-                checker = reverse ? obstructionChecker(i, val) : obstructionChecker(val, i);
+            let checker = reverse ? this.gridCmp.isPointObstructed(i, val) : this.gridCmp.isPointObstructed(val, i);
             if (checker) {
                 foundCollision = true;
                 break;
