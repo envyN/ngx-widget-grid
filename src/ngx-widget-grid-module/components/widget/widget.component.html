@@ -1,0 +1,34 @@
+<div class="wg-widget-content">
+  <ng-content></ng-content>
+</div>
+<div ngx-widget-mover
+     *ngIf="movable"
+     class="wg-widget-edit-move"></div>
+<div *ngIf="resizable"
+     class="wg-widget-edit-resize">
+
+  <div class="wg-resize wg-resize-axis wg-resize-n"
+       [ngx-widget-resizer]="allDirections.top"
+       [hidden]="!isTopResizable"></div>
+  <div class="wg-resize wg-resize-axis wg-resize-e"
+       [ngx-widget-resizer]="allDirections.right"
+       [hidden]="!isRightResizable"></div>
+  <div class="wg-resize wg-resize-axis wg-resize-s"
+       [ngx-widget-resizer]="allDirections.bottom"
+       [hidden]="!isBottomResizable"></div>
+  <div class="wg-resize wg-resize-axis wg-resize-w"
+       [ngx-widget-resizer]="allDirections.left"
+       [hidden]="!isLeftResizable"></div>
+  <div class="wg-resize wg-resize-diag wg-resize-nw"
+       [ngx-widget-resizer]="allDirections.topLeft"
+       [hidden]="!isTopLeftResizable"></div>
+  <div class="wg-resize wg-resize-diag wg-resize-ne"
+       [ngx-widget-resizer]="allDirections.topRight"
+       [hidden]="!isTopRightResizable"></div>
+  <div class="wg-resize wg-resize-diag wg-resize-se"
+       [ngx-widget-resizer]="allDirections.bottomRight"
+       [hidden]="!isBottomRightResizable"></div>
+  <div class="wg-resize wg-resize-diag wg-resize-sw"
+       [ngx-widget-resizer]="allDirections.bottomLeft"
+       [hidden]="!isBottomLeftResizable"></div>
+</div>

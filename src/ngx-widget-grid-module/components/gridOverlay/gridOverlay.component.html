@@ -1,0 +1,16 @@
+<div class="wg-grid-overlay">
+  <div *ngFor="let row of gridRows"
+       class="wg-preview-item wg-preview-row"
+       [style.height]="row.height"
+       [style.top]="row.y"></div>
+  <div *ngFor="let column of gridCols"
+       class="wg-preview-item wg-preview-column"
+       [style.width]="column.width"
+       [style.left]="column.x"></div>
+  <div *ngIf="activeHighlight"
+       class="wg-preview-item wg-preview-highlight"
+       [style.top]="activeHighlight.y"
+       [style.height]="activeHighlight.height"
+       [style.left]="activeHighlight.x"
+       [style.width]="activeHighlight.width"></div>
+</div>
