@@ -17,7 +17,7 @@ $ npm install ngx-widget-grid
 Add the ngx-widget-grid module as a dependency to your application module:
 
 ```
-import { NgxWidgetGridModule } from 'ngx-widget-grid/dist';
+import { NgxWidgetGridModule } from 'ngx-widget-grid';
 
 @NgModule({
   declarations: [
@@ -32,14 +32,7 @@ import { NgxWidgetGridModule } from 'ngx-widget-grid/dist';
 })
 export class AppModule { }
 ```
-If using SystemJS add this to systemJS config:
-```javascript
-packages: {
-    ...
-    'ngx-widget-grid/dist': {main: 'bundles/ngx-widget-grid.umd.js', defaultExtension: 'js'},
-    ...
-}
-```
+
 ## Usage
 #### Minimal Example
 ```html
@@ -138,8 +131,27 @@ Emitted whenever the position of a widget is changed. The event comes with an at
 `getNextPosition` is a function you could call to get details about the next available position that is being highlighted as part of `highlightNextPosition`.
 
 
-## Build
-Check out `/src` for the original source code.
-
+## Build (for developers/contributors)
+* Install [yarn](https://yarnpkg.com/lang/en/docs/install/)
+* Install dependencies
+  ```javascript
+  yarn install
+  ```
+* Run
+  ```javascript
+  yarn start
+  ```
+* Build
+  ```javascript
+  yarn build
+  ```
+* Link
+  ```javascript
+  cd dist && yarn link
+  ```
+* Publish (from repo root directory)
+  ```javascript
+  yarn publish:lib --new-version <version>
+  ```
 ## License
 MIT

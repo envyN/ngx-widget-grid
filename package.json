@@ -40,6 +40,7 @@
     "ng-packagr": "^2.4.1",
     "protractor": "~5.1.0",
     "rxjs": "^5.5.0",
+    "tar": "^4.4.1",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": ">=2.4.2 <2.7.0",
@@ -57,12 +58,15 @@
     "start": "ng serve -o --host=0.0.0.0  --disable-host-check",
     "version:lib": "yarn version",
     "build": "ng-packagr -p package.json",
+    "postbuild": "node ./scripts/retar.ts",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prepublish:lib": "yarn version:lib && yarn build",
     "publish:lib": "yarn publish dist.tgz",
-    "postpublish:lib": "git push"
+    "postpublish:lib": "git push && git push --tags",
+    "removeTag:remote":"git push --delete origin",
+    "removeTag:local":"git tag --delete"
   },
   "repository": "git+https://github.com/envyN/ngx-widget-grid.git",
   "keywords": [

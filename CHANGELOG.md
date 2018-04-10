@@ -1,5 +1,5 @@
 # Change Log
-## unreleased
+## 5.0.0-alpha.3 (2018-04-10)
 ### Features
 * Migrated to Angular 5.0.0. 
 * Touch support
