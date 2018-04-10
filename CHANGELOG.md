@@ -1,7 +1,7 @@
 # Change Log
-## 5.0.0-alpha.3 (2018-04-10)
+## 5.0.0 (2018-04-10)
 ### Features
-* Migrated to Angular 5.0.0. 
+* Migrated to **Angular 5.0.0** and hence changing the version number to 5.0.0 skipping 3,4 in between to keep library version in sync with the major version of angular 
 * Touch support
 * Performance improvement to handle resize and move better along with use of OnPush ChangeDetectionStrategy
 * Cleaned up dependencies and peerDependencies

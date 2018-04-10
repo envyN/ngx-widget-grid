@@ -12,7 +12,10 @@ Install with [npm](http://www.npmjs.com/):
 ```sh
 $ npm install ngx-widget-grid
 ```
-
+or with [yarn](https://yarnpkg.com/)
+```sh
+$ yarn add ngx-widget-grid
+```
 
 Add the ngx-widget-grid module as a dependency to your application module:
 
