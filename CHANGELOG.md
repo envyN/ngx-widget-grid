@@ -7,7 +7,8 @@
 * Cleaned up dependencies and peerDependencies
 * New Build tools: Yarn + ng-cli
 * Shift to [ng-packagr](https://github.com/dherges/ng-packagr) for packaging the library
-###Breaking Changes
+
+### Breaking Changes
 * `GridRectangle` class has been renamed to `Rectangle`
 * `GridPoint` class has been renamed to `Cell`
 
