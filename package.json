@@ -56,10 +56,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o --host=0.0.0.0  --disable-host-check",
+    "version:lib": "yarn version",
     "build": "ng-packagr -p package.json",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prepublish:lib": "yarn version:lib && yarn build",
+    "publish:lib": "yarn publish dist.tgz",
+    "postpublish:lib": "git push"
   },
   "repository": "git+https://github.com/envyN/ngx-widget-grid.git",
   "keywords": [
