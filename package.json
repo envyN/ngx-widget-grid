@@ -1,6 +1,6 @@
 {
   "name": "ngx-widget-grid",
-  "version": "5.0.0-alpha.2",
+  "version": "5.0.0-alpha.3",
   "description": "An angular 2.0+ module for widget-grids to be used for dashboard",
   "main": "index.js",
   "dependencies": {},
@@ -65,8 +65,8 @@
     "prepublish:lib": "yarn version:lib && yarn build",
     "publish:lib": "yarn publish dist.tgz",
     "postpublish:lib": "git push && git push --tags",
-    "removeTag:remote":"git push --delete origin",
-    "removeTag:local":"git tag --delete"
+    "removeTag:remote": "git push --delete origin",
+    "removeTag:local": "git tag --delete"
   },
   "repository": "git+https://github.com/envyN/ngx-widget-grid.git",
   "keywords": [
