@@ -1,1 +1,1 @@
-export * from './src/ngx-widget-grid-module';
+export * from './src/ngx-widget-grid-module/index';

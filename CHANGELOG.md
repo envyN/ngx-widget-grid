@@ -1,4 +1,8 @@
 # Change Log
+## 5.0.1 (2018-04-13)
+### Fixes
+* Fix #13 where applications dont pass AOT build due to incomplete metadata.json being generated
+
 ## 5.0.0 (2018-04-10)
 ### Features
 * Migrated to **Angular 5.0.0** and hence changing the version number to 5.0.0 skipping 3,4 in between to keep library version in sync with the major version of angular 
