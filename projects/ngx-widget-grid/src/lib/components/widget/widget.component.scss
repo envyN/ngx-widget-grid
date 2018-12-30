@@ -1,0 +1,141 @@
+$diagonal-resizer-dimension: 0.5rem;
+:host {
+  position: absolute;
+  .wg-widget-content {
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+  &.wg-moving .wg-widget-content,
+  &.wg-resizing .wg-widget-content {
+    opacity: 0.2;
+    z-index: 18;
+  }
+  &.wg-moving {
+    .wg-widget-edit-move {
+      cursor: move;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+    }
+  }
+}
+
+.wg-widget-edit-move {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  bottom: 6px;
+  left: 6px;
+  z-index: 20;
+  touch-action: none;
+  cursor: move;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.wg-widget-edit-resize {
+  position: absolute;
+  touch-action: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+}
+
+.wg-resize {
+  position: absolute;
+}
+
+.wg-resize-diag {
+  border-color: rgba(0, 113, 188, 0.75);
+  border-style: solid;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+
+.wg-resize-diag:hover {
+  border-color: rgba(0, 138, 229, 0.75);
+}
+
+.wg-resize-diag.dragging {
+  border-color: rgba(0, 174, 239, 0.75);
+}
+
+.wg-resize-axis {
+  background-color: rgba(0, 113, 188, 0.12);
+}
+
+.wg-resize-axis.dragging {
+  background-color: rgba(0, 174, 239, 0.24);
+}
+
+.wg-resize-nw {
+  top: 0;
+  left: 0;
+  cursor: nw-resize;
+  border-width: $diagonal-resizer-dimension $diagonal-resizer-dimension 0 0;
+  border-right-color: transparent !important;
+}
+
+.wg-resize-ne {
+  top: 0;
+  right: 0;
+  cursor: ne-resize;
+  border-width: $diagonal-resizer-dimension 0 0 $diagonal-resizer-dimension;
+  border-left-color: transparent !important;
+}
+
+.wg-resize-se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+  border-width: 0 0 $diagonal-resizer-dimension $diagonal-resizer-dimension;
+  border-left-color: transparent !important;
+}
+
+.wg-resize-sw {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize;
+  border-width: 0 $diagonal-resizer-dimension $diagonal-resizer-dimension 0;
+  border-right-color: transparent !important;
+}
+
+.wg-resize-n {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $diagonal-resizer-dimension/2;
+  cursor: n-resize;
+}
+
+.wg-resize-e {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: $diagonal-resizer-dimension/2;
+  cursor: e-resize;
+}
+
+.wg-resize-s {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: $diagonal-resizer-dimension/2;
+  cursor: s-resize;
+}
+
+.wg-resize-w {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: $diagonal-resizer-dimension/2;
+  cursor: w-resize;
+}
+
+[hidden] {
+  display: none;
+}

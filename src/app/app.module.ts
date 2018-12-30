@@ -1,23 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { NgxWidgetGridModule } from '../ngx-widget-grid-module/ngx-widget-grid.module';
-import { ClarityModule } from '@clr/angular';
+import { AppComponent } from './components/root/app.component';
+import { NgxWidgetGridModule } from 'ngx-widget-grid';
+import { FormsModule } from '@angular/forms';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
+import { AppModuleRouting } from './app.module.routing';
+import { AboutComponent } from './components/about/about.component';
+import { BasicExampleComponent } from './components/basic-example/basic-example.component';
 
 @NgModule({
             declarations: [
-              AppComponent
+              AppComponent,
+              AboutComponent,
+              BasicExampleComponent
             ],
             imports: [
+              AppModuleRouting,
               BrowserModule,
               FormsModule,
               NgxWidgetGridModule,
-              ClarityModule
+              ClarityModule,
+              ClrFormsNextModule
             ],
             providers: [],
             bootstrap: [AppComponent]
           })
-export class AppModule {
-}
+export class AppModule {}

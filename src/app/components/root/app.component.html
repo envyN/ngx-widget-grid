@@ -1,0 +1,48 @@
+<div class="main-container">
+  <header class="header header-6">
+    <div class="branding">
+      <img alt="Angular Logo"
+           height="100%"
+           src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+      <span class="title">{{ title }}</span>
+    </div>
+    <div class="settings">
+      <iframe src="https://ghbtns.com/github-btn.html?user=envyN&repo=ngx-widget-grid&type=star&count=true"
+              class="github-btn"
+              frameborder="0"
+              scrolling="0"
+              width="170px"
+              height="20px"></iframe>
+    </div>
+  </header>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true"
+                      [(clrVerticalNavCollapsed)]="collapsed">
+      <a clrVerticalNavLink
+         routerLink="./about"
+         routerLinkActive="active">
+        About
+      </a>
+      <a clrVerticalNavLink
+         routerLink="./basic"
+         routerLinkActive="active">
+        Basic Example
+      </a>
+      <!--<a clrVerticalNavLink-->
+         <!--routerLink="./dragdrop"-->
+         <!--routerLinkActive="active">-->
+        <!--Drag and Drop-->
+      <!--</a>-->
+      <!--<a clrVerticalNavLink-->
+         <!--routerLink="./groupeddragdrop"-->
+         <!--routerLinkActive="active">-->
+        <!--Grouped Drag and Drop-->
+      <!--</a>-->
+    </clr-vertical-nav>
+  </div>
+</div>
+
+

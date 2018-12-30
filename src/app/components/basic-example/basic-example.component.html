@@ -1,0 +1,82 @@
+<div class="dashboard-container">
+  <div class="form">
+    <button class="btn btn-sm"
+            [class.btn-primary]="editable"
+            (click)="editable = !editable">
+      <clr-icon shape="pencil"
+                *ngIf="!editable"></clr-icon>
+      {{editable&&'Done'||'Edit'}}
+    </button>
+    <button class="btn btn-sm"
+            [hidden]="!editable"
+            (mouseover)="toggleHighlight(true)"
+            (mouseleave)="toggleHighlight(false)"
+            (click)="addWidget()">
+      <clr-icon shape="plus"></clr-icon>
+      Widget
+    </button>
+    <div class="toggle-switch"
+         [hidden]="!editable">
+      <input type="checkbox"
+             id="swapper"
+             [(ngModel)]="swapWidgets">
+      <label for="swapper">Swap Widgets</label>
+    </div>
+    <div class="toggle-switch">
+      <input type="checkbox"
+             id="grid"
+             [(ngModel)]="showGrid">
+      <label for="grid">Grid</label>
+    </div>
+    Rows: <b>{{rows}}</b>
+    <div class="btn-group">
+      <button class="btn btn-sm btn-icon"
+              (click)="doRows(false)">
+        <clr-icon shape="minus"></clr-icon>
+      </button>
+      <button class="btn btn-sm btn-icon"
+              (click)="doRows(true)">
+        <clr-icon shape="plus"></clr-icon>
+      </button>
+    </div>
+    Cols: <b>{{cols}}</b>
+    <div class="btn-group">
+      <button class="btn btn-sm btn-icon"
+              (click)="doCols(false)">
+        <clr-icon shape="minus"></clr-icon>
+      </button>
+      <button class="btn btn-sm btn-icon"
+              (click)="doCols(true)">
+        <clr-icon shape="plus"></clr-icon>
+      </button>
+    </div>
+  </div>
+  <div class="dashboard-page">
+    <ngx-widget-grid [rows]="rows"
+                     [columns]="cols"
+                     [highlightNextPosition]="highlightNextPosition"
+                     #grid
+                     [showGrid]="showGrid"
+                     (widgetPositionChange)="onWidgetChange($event)">
+      <ngx-widget *ngFor="let widget of widgets;let $index = index;"
+                  [position]="widget"
+                  [movable]="editable"
+                  [resizable]="editable"
+                  [swapOnMove]="swapWidgets">
+        <div style="height:100%;width:100%; display:flex;">
+          <div class="my-widgets"
+               style="height:100%;width:100%; padding:10px;"
+               [ngStyle]="{'background-color':widget.color}">
+            <clr-icon shape="trash"
+                      class="clickable"
+                      (click)="askDeleteWidget($index)"
+                      *ngIf="editable"></clr-icon>
+            <div>
+              {{widget.text}}
+            </div>
+          </div>
+        </div>
+      </ngx-widget>
+    </ngx-widget-grid>
+  </div>
+</div>
