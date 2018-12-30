@@ -1,4 +1,9 @@
 # Change Log
+## 6.0.0-beta.1 (2018-12-30)
+### Fixes
+* Fix #4 Added `swapOnMove` for enabling widget swaps on move-drop
+* Updated library to Angular 6 and updated the demo app as well
+
 ## 5.0.1 (2018-04-13)
 ### Fixes
 * Fix #13 where applications dont pass AOT build due to incomplete metadata.json being generated
