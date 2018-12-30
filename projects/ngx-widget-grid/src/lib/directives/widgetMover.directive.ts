@@ -179,7 +179,7 @@ export class NgxWidgetMoverDirective {
     const desiredFinalPosition: any = this.gridCmp.rasterizeCoords(anchorLeft, anchorTop);
     const path = new PathIterator(desiredFinalPosition, startPos);
 
-    while (path.hasNext()) {
+    while (path && path.hasNext()) {
       const currPos = path.next();
 
       const targetArea = new Rectangle({

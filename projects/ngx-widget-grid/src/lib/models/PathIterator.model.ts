@@ -11,6 +11,14 @@ export class PathIterator {
   public nextPos: Cell;
 
   constructor(start: Rectangle, end: Rectangle) {
+    if (!start) {
+      console.error('Start not present for Path Iterator');
+      return;
+    }
+    if (!end) {
+      console.error('End not present for Path Iterator');
+      return;
+    }
     this.start = start;
     this.topDelta = end.top - start.top;
     this.leftDelta = end.left - start.left;
