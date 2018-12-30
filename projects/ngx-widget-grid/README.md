@@ -138,11 +138,23 @@ Emitted whenever the position of a widget is changed. The event comes with an at
 * Install [yarn](https://yarnpkg.com/lang/en/docs/install/)
 * Install dependencies
   ```javascript
-  yarn install --pure-locklfile
+  yarn install
   ```
 * Run
   ```javascript
   yarn start
+  ```
+* Build
+  ```javascript
+  yarn build
+  ```
+* Link
+  ```javascript
+  cd dist && yarn link
+  ```
+* Publish (from repo root directory)
+  ```javascript
+  yarn publish:lib --new-version <version>
   ```
 ## License
 MIT
