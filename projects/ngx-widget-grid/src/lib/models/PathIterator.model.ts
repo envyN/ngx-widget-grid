@@ -2,13 +2,13 @@ import { Cell } from './Cell.model';
 import { Rectangle } from './Rectangle.model';
 
 export class PathIterator {
-  public start: Rectangle;
-  public topDelta: number;
-  public leftDelta: number;
-  public steps: number;
-  public currStep: number;
-  public currPos: Cell;
-  public nextPos: Cell;
+  private _start: Rectangle;
+  private _heightDelta: number;
+  private _widthDelta: number;
+  private _steps: number;
+  private _currStep: number;
+  private _currPos: Cell = null;
+  private _nextPos: Cell = null;
 
   constructor(start: Rectangle, end: Rectangle) {
     if (!start) {
@@ -19,31 +19,31 @@ export class PathIterator {
       console.error('End not present for Path Iterator');
       return;
     }
-    this.start = start;
-    this.topDelta = end.top - start.top;
-    this.leftDelta = end.left - start.left;
-    this.steps = Math.max(Math.abs(this.topDelta), Math.abs(this.leftDelta));
-    this.currStep = 0;
-    this.currPos = null;
-    this.nextPos = new Cell(start.top, start.left);
+    this._start = start;
+    this._heightDelta = end.top - start.top;
+    this._widthDelta = end.left - start.left;
+    this._steps = Math.max(Math.abs(this._heightDelta), Math.abs(this._widthDelta));
+    this._currStep = 0;
+    this._currPos = null;
+    this._nextPos = new Cell(start.top, start.left);
   }
 
-  next(): Cell {
-    this.currPos = this.nextPos;
+  public next(): Cell {
+    this._currPos = this._nextPos;
 
-    if (this.currStep < this.steps) {
-      this.currStep++;
-      const currTopDelta = Math.round((this.currStep / this.steps) * this.topDelta);
-      const currLeftDelta = Math.round((this.currStep / this.steps) * this.leftDelta);
-      this.nextPos = new Cell(this.start.top + currTopDelta, this.start.left + currLeftDelta);
+    if (this._currStep < this._steps) {
+      this._currStep++;
+      const currTopDelta = Math.round((this._currStep / this._steps) * this._heightDelta);
+      const currLeftDelta = Math.round((this._currStep / this._steps) * this._widthDelta);
+      this._nextPos = new Cell(this._start.top + currTopDelta, this._start.left + currLeftDelta);
     } else {
-      this.nextPos = null;
+      this._nextPos = null;
     }
 
-    return this.currPos;
+    return this._currPos;
   }
 
-  hasNext(): boolean {
-    return this.nextPos !== null;
+  public hasNext(): boolean {
+    return this._nextPos !== null;
   }
 }

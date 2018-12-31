@@ -1,5 +1,5 @@
 # Change Log
-## 6.0.0-beta.1 (2018-12-30)
+## 6.0.0 (2018-12-31)
 ### Fixes
 * Fix #4 Added `swapOnMove` for enabling widget swaps on move-drop
 * Updated library to Angular 6 and updated the demo app as well
