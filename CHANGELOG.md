@@ -1,4 +1,12 @@
 # Change Log
+## 6.0.2 (2019-03-13)
+### Fixes
+* Fix #18
+
+## 6.0.1 (2019-01-11)
+### Fixes
+* Fix #16
+
 ## 6.0.0 (2018-12-31)
 ### Fixes
 * Fix #4 Added `swapOnMove` for enabling widget swaps on move-drop
