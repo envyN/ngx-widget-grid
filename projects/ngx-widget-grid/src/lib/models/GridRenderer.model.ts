@@ -76,7 +76,7 @@ export class GridRenderer {
 
   hasSpaceLeft() {
     for (const obstruction of this.obstructions) {
-      if (obstruction !== null) {
+      if (obstruction === null) {
         return true;
       }
     }

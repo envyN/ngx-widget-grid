@@ -111,4 +111,8 @@ export class BasicExampleComponent implements OnInit {
     const random = Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
     return random;
   }
+
+  public onGridFull(e) {
+    console.log(e);
+  }
 }

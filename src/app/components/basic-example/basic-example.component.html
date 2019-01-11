@@ -57,6 +57,7 @@
                      [highlightNextPosition]="highlightNextPosition"
                      #grid
                      [showGrid]="showGrid"
+                     (gridFull)="onGridFull($event)"
                      (widgetPositionChange)="onWidgetChange($event)">
       <ngx-widget *ngFor="let widget of widgets;let $index = index;"
                   [position]="widget"
