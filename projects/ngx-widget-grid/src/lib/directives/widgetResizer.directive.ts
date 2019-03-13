@@ -179,8 +179,8 @@ export class NgxWidgetResizerDirective {
       window.removeEventListener('pointermove', this._onMoveListener);
       window.removeEventListener('pointerup', this._onUpListener);
     } else {
-      window.addEventListener('mousemove', this._onMoveListener);
-      window.addEventListener('mouseup', this._onUpListener);
+      window.removeEventListener('mousemove', this._onMoveListener);
+      window.removeEventListener('mouseup', this._onUpListener);
     }
   }
 
