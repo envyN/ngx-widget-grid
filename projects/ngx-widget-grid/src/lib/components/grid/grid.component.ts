@@ -232,7 +232,7 @@ export class NgxWidgetGridComponent implements AfterViewInit {
   emitUpdatePosition(widget: WidgetConfig) {
     this.widgetPositionChange.emit({
                                      index: this.getWidgetIndex(widget),
-                                     newPosition: widget.position
+                                     newPosition: new Rectangle(widget.position)
                                    });
   }
 
