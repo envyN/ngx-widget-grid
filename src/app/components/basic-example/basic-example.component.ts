@@ -7,7 +7,7 @@ import { NgxWidgetGridComponent, WidgetPositionChange } from 'ngx-widget-grid';
              styleUrls: ['./basic-example.component.scss']
            })
 export class BasicExampleComponent implements OnInit {
-  @ViewChild('grid') grid: NgxWidgetGridComponent;
+  @ViewChild('grid', { static: true }) grid: NgxWidgetGridComponent;
   public rows = 6;
   public cols = 6;
   public widgets: any[] = [

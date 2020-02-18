@@ -5,7 +5,7 @@
             (click)="editable = !editable">
       <clr-icon shape="pencil"
                 *ngIf="!editable"></clr-icon>
-      {{editable&&'Done'||'Edit'}}
+      {{editable && 'Done' || 'Edit'}}
     </button>
     <button class="btn btn-sm"
             [hidden]="!editable"

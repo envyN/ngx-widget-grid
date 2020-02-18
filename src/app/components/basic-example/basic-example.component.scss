@@ -19,7 +19,7 @@
 /*
   Overriding ngx-widget-grid edit styling
  */
-/deep/ {
+::ng-deep {
   ngx-widget {
     .wg-widget-edit-resize {
       opacity: 0;
