@@ -1,6 +1,6 @@
 {
   "name": "ngx-widget-grid",
-  "version": "9.0.0-beta1",
+  "version": "9.0.0",
   "peerDependencies": {
     "@angular/common": "^9.0.0",
     "@angular/core": "^9.0.0"
