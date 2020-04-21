@@ -98,8 +98,8 @@ export class NgxWidgetResizerDirective {
     this.startRender.bottom = this.startRender.top + this.startRender.height;
     this.startRender.right = this.startRender.left + this.startRender.width;
 
-    const eventOffsetX = event.offsetX || event.layerX;
-    const eventOffsetY = event.offsetY || event.layerY;
+    const eventOffsetX = event.offsetX || (<any>event).layerX;
+    const eventOffsetY = event.offsetY || (<any>event).layerY;
 
     this.delta = {top: 0, right: 0, bottom: 0, left: 0};
     this.draggerOffset = {

@@ -54,8 +54,8 @@ export class NgxWidgetMoverDirective {
       width: widgetContainer.clientWidth
     }; // pixel values
 
-    const eventOffsetX = event.offsetX || event.layerX;
-    const eventOffsetY = event.offsetY || event.layerY;
+    const eventOffsetX = event.offsetX || (<any>event).layerX;
+    const eventOffsetY = event.offsetY || (<any>event).layerY;
 
     this.desiredPosition = {top: this.startRender.top, left: this.startRender.left};
 

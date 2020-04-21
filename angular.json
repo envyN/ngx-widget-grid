@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ngx-wg",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -28,12 +29,19 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+              "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+              "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
               "node_modules/@clr/icons/clr-icons.min.js"
             ]
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -138,6 +146,11 @@
           "options": {
             "tsConfig": "projects/ngx-widget-grid/tsconfig.lib.json",
             "project": "projects/ngx-widget-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-widget-grid/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -166,7 +179,7 @@
   "defaultProject": "ngx-wg",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }
