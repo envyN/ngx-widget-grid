@@ -10,6 +10,7 @@
   display: flex;
   flex-flow: column nowrap;
   flex: 1 1 100%;
+
   .dashboard-page {
     flex: 1 1 auto;
     position: relative;
@@ -24,6 +25,7 @@
     .wg-widget-edit-resize {
       opacity: 0;
     }
+
     &:hover {
       .wg-widget-edit-resize {
         opacity: 1;
@@ -34,4 +36,10 @@
 
 .btn-group {
   margin-left: 0.5rem;
+}
+
+clr-icon.clickable {
+  cursor: pointer;
+  position: relative;
+  z-index: 30;
 }
