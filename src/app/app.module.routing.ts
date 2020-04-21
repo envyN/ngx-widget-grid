@@ -2,6 +2,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AboutComponent } from './components/about/about.component';
 import { BasicExampleComponent } from './components/basic-example/basic-example.component';
+import { FixedDimensionExampleComponent } from './components/fixed-dimension-example/fixed-dimension-example.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'basic',
     component: BasicExampleComponent
+  },
+  {
+    path: 'fixedDimension',
+    component: FixedDimensionExampleComponent
   },
   {
     path: '**',

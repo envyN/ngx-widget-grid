@@ -22,20 +22,20 @@
     <clr-vertical-nav [clrVerticalNavCollapsible]="true"
                       [(clrVerticalNavCollapsed)]="collapsed">
       <a clrVerticalNavLink
-         routerLink="./about"
-         routerLinkActive="active">
+         [routerLink]="'./about'"
+         [routerLinkActive]="'active'">
         About
       </a>
       <a clrVerticalNavLink
-         routerLink="./basic"
-         routerLinkActive="active">
+         [routerLink]="['./basic']"
+         [routerLinkActive]="'active'">
         Basic Example
       </a>
-      <!--<a clrVerticalNavLink-->
-         <!--routerLink="./dragdrop"-->
-         <!--routerLinkActive="active">-->
-        <!--Drag and Drop-->
-      <!--</a>-->
+      <a clrVerticalNavLink
+         [routerLink]="['./fixedDimension']"
+         [routerLinkActive]="'active'">
+        Fixed Dimension
+      </a>
       <!--<a clrVerticalNavLink-->
          <!--routerLink="./groupeddragdrop"-->
          <!--routerLinkActive="active">-->

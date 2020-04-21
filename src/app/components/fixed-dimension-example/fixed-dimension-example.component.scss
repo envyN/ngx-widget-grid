@@ -1,0 +1,42 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+}
+
+.dashboard-container {
+  height: 100%;
+  overflow: auto;
+
+  .form {
+    margin-bottom: 2rem;
+  }
+
+  .dashboard-page {
+    height: 100%;
+    position: relative;
+  }
+}
+
+/*
+  Overriding ngx-widget-grid edit styling
+ */
+::ng-deep {
+  ngx-widget {
+    .wg-widget-edit-resize {
+      opacity: 0;
+    }
+
+    &:hover {
+      .wg-widget-edit-resize {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.btn-group {
+  margin-left: 0.5rem;
+}

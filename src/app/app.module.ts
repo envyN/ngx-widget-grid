@@ -8,12 +8,14 @@ import { ClarityModule, ClrFormsModule } from '@clr/angular';
 import { AppModuleRouting } from './app.module.routing';
 import { AboutComponent } from './components/about/about.component';
 import { BasicExampleComponent } from './components/basic-example/basic-example.component';
+import { FixedDimensionExampleComponent } from './components/fixed-dimension-example/fixed-dimension-example.component';
 
 @NgModule({
             declarations: [
               AppComponent,
               AboutComponent,
-              BasicExampleComponent
+              BasicExampleComponent,
+              FixedDimensionExampleComponent
             ],
             imports: [
               AppModuleRouting,
