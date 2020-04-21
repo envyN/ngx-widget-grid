@@ -41,42 +41,44 @@ export class NgxWidgetMoverDirective {
   @HostListener('mousedown', ['$event'])
   @HostListener('pointerdown', ['$event'])
   onDown(event: MouseEvent) {
-    event.preventDefault();
-    this.renderer.addClass(this.widgetCmp.getEl().nativeElement, 'wg-moving');
-    const widgetContainer = this.widgetCmp.getEl().nativeElement;
+    if (event.button === 0) {
+      event.preventDefault();
+      this.renderer.addClass(this.widgetCmp.getEl().nativeElement, 'wg-moving');
+      const widgetContainer = this.widgetCmp.getEl().nativeElement;
 
-    this.startPosition = this.gridCmp.getWidgetPosition(this.widgetCmp);
+      this.startPosition = this.gridCmp.getWidgetPosition(this.widgetCmp);
 
-    this.startRender = {
-      top: widgetContainer.offsetTop,
-      left: widgetContainer.offsetLeft,
-      height: widgetContainer.clientHeight,
-      width: widgetContainer.clientWidth
-    }; // pixel values
+      this.startRender = {
+        top: widgetContainer.offsetTop,
+        left: widgetContainer.offsetLeft,
+        height: widgetContainer.clientHeight,
+        width: widgetContainer.clientWidth
+      }; // pixel values
 
-    const eventOffsetX = event.offsetX || (<any>event).layerX;
-    const eventOffsetY = event.offsetY || (<any>event).layerY;
+      const eventOffsetX = event.offsetX || (<any> event).layerX;
+      const eventOffsetY = event.offsetY || (<any> event).layerY;
 
-    this.desiredPosition = {top: this.startRender.top, left: this.startRender.left};
+      this.desiredPosition = {top: this.startRender.top, left: this.startRender.left};
 
-    this.moverOffset = new Rectangle({
-                                       top: eventOffsetY + this.el.nativeElement.offsetTop || 0,
-                                       left: eventOffsetX + this.el.nativeElement.offsetLeft || 0
-                                     });
+      this.moverOffset = new Rectangle({
+                                         top: eventOffsetY + this.el.nativeElement.offsetTop || 0,
+                                         left: eventOffsetX + this.el.nativeElement.offsetLeft || 0
+                                       });
 
-    this.gridPositions = this.gridCmp.getGridRectangle();
-    this.cellHeight = (this.gridCmp.grid.cellSize.height / 100) * this.gridPositions.height;
-    this.cellWidth = (this.gridCmp.grid.cellSize.width / 100) * this.gridPositions.width;
-    this.enableDrag = this.widgetCmp.getConfig().id;
+      this.gridPositions = this.gridCmp.getGridRectangle();
+      this.cellHeight = (this.gridCmp.grid.cellSize.height / 100) * this.gridPositions.height;
+      this.cellWidth = (this.gridCmp.grid.cellSize.width / 100) * this.gridPositions.width;
+      this.enableDrag = this.widgetCmp.getConfig().id;
 
-    this.renderer.setStyle(this.widgetCmp.getEl().nativeElement, 'z-index', this.ngxWidgetMover ? 0 : 100);
+      this.renderer.setStyle(this.widgetCmp.getEl().nativeElement, 'z-index', this.ngxWidgetMover ? 0 : 100);
 
-    if (typeof PointerEvent !== 'undefined') {
-      window.addEventListener('pointermove', this._onMoveListener);
-      window.addEventListener('pointerup', this._onUpListener);
-    } else {
-      window.addEventListener('mousemove', this._onMoveListener);
-      window.addEventListener('mouseup', this._onUpListener);
+      if (typeof PointerEvent !== 'undefined') {
+        window.addEventListener('pointermove', this._onMoveListener);
+        window.addEventListener('pointerup', this._onUpListener);
+      } else {
+        window.addEventListener('mousemove', this._onMoveListener);
+        window.addEventListener('mouseup', this._onUpListener);
+      }
     }
   }
 
