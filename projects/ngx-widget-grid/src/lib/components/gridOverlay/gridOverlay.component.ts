@@ -22,7 +22,6 @@ export class NgxGridOverlayComponent {
   constructor(private sanitizer: DomSanitizer) {
   }
 
-
   get renderer(): GridRenderer {
     return this._renderer;
   }
@@ -45,7 +44,6 @@ export class NgxGridOverlayComponent {
     this.updateGridLines(this.renderer, this.showGrid);
   }
 
-
   get highlight() {
     return this._highlight;
   }
@@ -58,7 +56,6 @@ export class NgxGridOverlayComponent {
       this.highlightArea(highlight, this.renderer);
     }
   }
-
 
   get showGrid() {
     return this._showGrid;
@@ -101,32 +98,34 @@ export class NgxGridOverlayComponent {
   }
 
   showGridLines(renderer: GridRenderer): void {
-    const cellHeight = renderer.grid.cellSize.height;
-    const cellWidth = renderer.grid.cellSize.width;
-    const height = cellHeight + '%';
-    const width = cellWidth + '%';
-    const rows = renderer.grid.rows;
-    const cols = renderer.grid.columns;
-    for (let i = 1; i < rows; i += 2) {
-      let y: string, h: string, row: { y: SafeStyle, height: SafeStyle };
-      y = (i * cellHeight) + '%';
-      h = 'calc(' + height + ' - 1px)';
-      row = {
-        y: this.sanitizer.bypassSecurityTrustStyle(y),
-        height: this.sanitizer.bypassSecurityTrustStyle(h)
-      };
-      this.gridRows.push(row);
-    }
+    if (renderer) {
+      const cellHeight = renderer.grid.cellSize.height;
+      const cellWidth = renderer.grid.cellSize.width;
+      const height = cellHeight + '%';
+      const width = cellWidth + '%';
+      const rows = renderer.grid.rows;
+      const cols = renderer.grid.columns;
+      for (let i = 1; i < rows; i += 2) {
+        let y: string, h: string, row: { y: SafeStyle, height: SafeStyle };
+        y = (i * cellHeight) + '%';
+        h = 'calc(' + height + ' - 1px)';
+        row = {
+          y: this.sanitizer.bypassSecurityTrustStyle(y),
+          height: this.sanitizer.bypassSecurityTrustStyle(h)
+        };
+        this.gridRows.push(row);
+      }
 
-    for (let i = 1; i < cols; i += 2) {
-      let x: string, w: string, col: { x: SafeStyle, width: SafeStyle };
-      x = (i * cellWidth) + '%';
-      w = 'calc(' + width + ' - 1px)';
-      col = {
-        x: this.sanitizer.bypassSecurityTrustStyle(x),
-        width: this.sanitizer.bypassSecurityTrustStyle(w)
-      };
-      this.gridCols.push(col);
+      for (let i = 1; i < cols; i += 2) {
+        let x: string, w: string, col: { x: SafeStyle, width: SafeStyle };
+        x = (i * cellWidth) + '%';
+        w = 'calc(' + width + ' - 1px)';
+        col = {
+          x: this.sanitizer.bypassSecurityTrustStyle(x),
+          width: this.sanitizer.bypassSecurityTrustStyle(w)
+        };
+        this.gridCols.push(col);
+      }
     }
   }
 }
