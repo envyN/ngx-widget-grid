@@ -1,7 +1,7 @@
 # ngx-widget-grid
 [![codebeat badge](https://codebeat.co/badges/8693fc3e-1013-4d82-a121-9a854c1da50b)](https://codebeat.co/projects/github-com-envyn-ngx-widget-grid-master)
 
-A flexible grid layout for responsive dashboards
+A flexible grid layout for responsive dashboards.
 
 This library got its inspiration from [*angular-widget-grid*](http://patbuergin.github.io/angular-widget-grid/) and has been written as a pure Angular 2.x [+] module.
 #### Demo: https://envyn.github.io/ngx-widget-grid
