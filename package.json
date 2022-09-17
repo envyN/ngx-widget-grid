@@ -30,7 +30,7 @@
     "@angular/platform-browser": "^12.2.16",
     "@angular/platform-browser-dynamic": "^12.2.16",
     "@angular/router": "^12.2.16",
-    "@clr/angular": "^5.5.3",
+    "@clr/angular": "^12.4.1",
     "@clr/icons": "^4.0.1",
     "@clr/ui": "^5.5.3",
     "core-js": "^3.6.4",
