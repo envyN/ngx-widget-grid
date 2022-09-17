@@ -1,22 +1,23 @@
 $diagonal-resizer-dimension: 0.5rem;
 :host {
   position: absolute;
+
   .wg-widget-content {
     position: absolute;
     overflow: hidden;
     height: 100%;
     width: 100%;
   }
+
   &.wg-moving .wg-widget-content,
   &.wg-resizing .wg-widget-content {
     opacity: 0.2;
     z-index: 18;
   }
+
   &.wg-moving {
     .wg-widget-edit-move {
       cursor: move;
-      cursor: -moz-grabbing;
-      cursor: -webkit-grabbing;
     }
   }
 }
@@ -30,8 +31,6 @@ $diagonal-resizer-dimension: 0.5rem;
   z-index: 20;
   touch-action: none;
   cursor: move;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
 }
 
 .wg-widget-edit-resize {
@@ -108,7 +107,7 @@ $diagonal-resizer-dimension: 0.5rem;
   top: 0;
   right: 0;
   left: 0;
-  height: $diagonal-resizer-dimension/2;
+  height: $diagonal-resizer-dimension*0.5;
   cursor: n-resize;
 }
 
@@ -116,7 +115,7 @@ $diagonal-resizer-dimension: 0.5rem;
   top: 0;
   right: 0;
   bottom: 0;
-  width: $diagonal-resizer-dimension/2;
+  width: $diagonal-resizer-dimension*0.5;
   cursor: e-resize;
 }
 
@@ -124,7 +123,7 @@ $diagonal-resizer-dimension: 0.5rem;
   right: 0;
   bottom: 0;
   left: 0;
-  height: $diagonal-resizer-dimension/2;
+  height: $diagonal-resizer-dimension*0.5;
   cursor: s-resize;
 }
 
@@ -132,7 +131,7 @@ $diagonal-resizer-dimension: 0.5rem;
   top: 0;
   bottom: 0;
   left: 0;
-  width: $diagonal-resizer-dimension/2;
+  width: $diagonal-resizer-dimension*0.5;
   cursor: w-resize;
 }
 
