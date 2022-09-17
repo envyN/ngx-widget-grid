@@ -1,7 +1,7 @@
 # ngx-widget-grid
 [![codebeat badge](https://codebeat.co/badges/8693fc3e-1013-4d82-a121-9a854c1da50b)](https://codebeat.co/projects/github-com-envyn-ngx-widget-grid-master)
 
-A flexible grid layout for responsive dashboards
+A flexible grid layout for responsive dashboards.
 
 This library got its inspiration from [*angular-widget-grid*](http://patbuergin.github.io/angular-widget-grid/) and has been written as a pure Angular 2.x [+] module.
 #### Demo: https://envyn.github.io/ngx-widget-grid
@@ -57,13 +57,13 @@ export class AppModule { }
 #### Widgets
 ##### `position`
 ```html
-<ngx-widget [(position)]="widget.position"...>
+<ngx-widget [(position)]="widget.position"></ngx-widget>
 ```
 You can bind the position of the widget to data received from server so that even if the widget is moved, the new positions are always updated in the widget configuration.
 
 ##### `movable`
 ```html
-<ngx-widget [movable]="true" [(position)]="widget.position"...>
+<ngx-widget [movable]="true" [(position)]="widget.position"></ngx-widget>
 ```
 If `movable` is true, users will be able to move the respective widget.
 
@@ -71,7 +71,7 @@ If `movable` is true, users will be able to move the respective widget.
 
 ##### `resizable`
 ```html
-<ngx-widget [resizable]="true" [(position)]="widget.position"...>
+<ngx-widget [resizable]="true" [(position)]="widget.position"></ngx-widget>
 ```
 If `resizable` is true, users will be able to resize the respective widget.
 
@@ -79,14 +79,14 @@ If `resizable` is true, users will be able to resize the respective widget.
 
 Optionally, you can limit the resize directions:
 ```html
-<ngx-widget [resizeDirections]="['NW', 'NE', 'E', 'SW']" [(position)]="widget.position"...>
+<ngx-widget [resizeDirections]="['NW', 'NE', 'E', 'SW']" [(position)]="widget.position"></ngx-widget>
 ```
 
 ![Restricted Resizing](https://raw.githubusercontent.com/patbuergin/angular-widget-grid/master/doc/wg-4.png)
 
 ##### `swapOnMove`
 ````html
-<ngx-widget [swapOnMove]="true" [(position)]="widget.position"...>
+<ngx-widget [swapOnMove]="true" [(position)]="widget.position"></ngx-widget>
 ````
 If `swapOnMove` is `true`, dragged widget will swap position and size with the widget over which the current one is dropped.
 Default is `false` which means, widget will be placed in the nearest available area.
@@ -118,13 +118,13 @@ The grid emits `gridFull`event as `true` (when grid has been fully occupied) or 
 ```javascript
 function onGridFull(isGridFull) {
     if(isGridFull){
-        ...
+        //...
         //make add widget button disabled
-        ...
+        //...
     }else{
-        ...
+        //...
         //make add widget button enabled
-        ...
+        //...
     }
 }
 ```
@@ -143,23 +143,27 @@ Emitted whenever the position of a widget is changed. The event comes with an at
 ## Build (for developers/contributors)
 * Install [yarn](https://yarnpkg.com/lang/en/docs/install/)
 * Install dependencies
-  ```javascript
+  ```nodejs
   yarn install
   ```
+* Build library
+  ```nodejs
+  yarn build-lib
+  ```
 * Run
-  ```javascript
+  ```nodejs
   yarn start
   ```
 * Build
-  ```javascript
+  ```nodejs
   yarn build
   ```
 * Link
-  ```javascript
+  ```nodejs
   cd dist && yarn link
   ```
 * Publish (from repo root directory)
-  ```javascript
+  ```nodejs
   yarn publish:lib --new-version <version>
   ```
 ## License
