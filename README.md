@@ -146,6 +146,10 @@ Emitted whenever the position of a widget is changed. The event comes with an at
   ```javascript
   yarn install
   ```
+* Build library
+  ```javascript
+  yarn build-lib
+  ```
 * Run
   ```javascript
   yarn start
