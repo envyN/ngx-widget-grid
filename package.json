@@ -30,15 +30,16 @@
     "@angular/platform-browser": "^11.2.14",
     "@angular/platform-browser-dynamic": "^11.2.14",
     "@angular/router": "^11.2.14",
-    "@clr/angular": "^4.0.1",
+    "@clr/angular": "^5.5.3",
     "@clr/icons": "^4.0.1",
-    "@clr/ui": "^4.0.1",
+    "@clr/ui": "^5.5.3",
     "core-js": "^3.6.4",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
     "@clr/core": "^4.0.1",
-    "@webcomponents/webcomponentsjs": "^2.0.0"
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "@cds/core": "^5.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.19",
