@@ -1,9 +1,5 @@
-export interface IRectangle {
-  top?: number;
-  left?: number;
-  width?: number;
-  height?: number;
-}
+import { IRectangle } from '../interfaces/iRectangle';
+
 
 export class Rectangle implements IRectangle {
   public top = 0;

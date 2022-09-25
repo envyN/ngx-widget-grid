@@ -12,5 +12,6 @@ export * from './lib/models/GridRenderer.model';
 export * from './lib/models/PathIterator.model';
 export * from './lib/models/Rectangle.model';
 export * from './lib/models/WidgetConfig.model';
-export * from './lib/models/widgetPositionChange.interface';
+export * from './lib/interfaces/iWidgetPositionChange';
+export * from './lib/interfaces/iRectangle';
 export * from './lib/ngx-widget-grid.module';

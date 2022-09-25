@@ -17,7 +17,7 @@ import { GridRenderer } from '../../models/GridRenderer.model';
 import { Cell } from '../../models/Cell.model';
 import { WidgetConfig } from '../../models/WidgetConfig.model';
 import { Rectangle } from '../../models/Rectangle.model';
-import { WidgetPositionChange } from '../../models/widgetPositionChange.interface';
+import { WidgetPositionChange } from '../../interfaces/iWidgetPositionChange';
 
 @Component({
              selector: 'ngx-widget-grid',
