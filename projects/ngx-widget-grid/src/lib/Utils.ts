@@ -34,3 +34,4 @@ export const ALL_DIRECTIONS: RESIZE_DIRECTIONS[] = [
   RESIZE_DIRECTIONS.topLeft,
   RESIZE_DIRECTIONS.topRight
 ];
+export const getPercentStyle = (num) => `${ num }%`;

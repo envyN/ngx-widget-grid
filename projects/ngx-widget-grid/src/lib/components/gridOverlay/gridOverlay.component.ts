@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Utils } from '../../Utils';
+import { getPercentStyle, Utils } from '../../Utils';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { GridRenderer } from '../../models/GridRenderer.model';
 import { Rectangle } from '../../models/Rectangle.model';
@@ -84,15 +84,13 @@ export class NgxGridOverlayComponent {
   }
 
   highlightArea(area: Rectangle, renderer: GridRenderer): void {
-    const cellSize = renderer.grid.cellSize;
-    const cellHeight = cellSize.height;
-    const cellWidth = cellSize.width;
+    const {height, width} = renderer.grid.cellSize;
 
     this.activeHighlight = {
-      x: (area.left - 1) * cellWidth + '%',
-      y: (area.top - 1) * cellHeight + '%',
-      height: area.height * cellHeight + '%',
-      width: area.width * cellWidth + '%'
+      x: getPercentStyle((area.left - 1) * width),
+      y: getPercentStyle((area.top - 1) * height),
+      height: getPercentStyle(area.height * height),
+      width: getPercentStyle(area.width * width)
     };
     this.sanitizer.bypassSecurityTrustStyle(this.activeHighlight);
   }
@@ -101,14 +99,14 @@ export class NgxGridOverlayComponent {
     if (renderer) {
       const cellHeight = renderer.grid.cellSize.height;
       const cellWidth = renderer.grid.cellSize.width;
-      const height = cellHeight + '%';
-      const width = cellWidth + '%';
+      const heightPercent = getPercentStyle(cellHeight);
+      const widthPercent = getPercentStyle(cellWidth);
       const rows = renderer.grid.rows;
       const cols = renderer.grid.columns;
       for (let i = 1; i < rows; i += 2) {
         let y: string, h: string, row: { y: SafeStyle, height: SafeStyle };
-        y = (i * cellHeight) + '%';
-        h = 'calc(' + height + ' - 1px)';
+        y = getPercentStyle(i * cellHeight);
+        h = `calc(${ heightPercent } - 1px)`;
         row = {
           y: this.sanitizer.bypassSecurityTrustStyle(y),
           height: this.sanitizer.bypassSecurityTrustStyle(h)
@@ -118,8 +116,8 @@ export class NgxGridOverlayComponent {
 
       for (let i = 1; i < cols; i += 2) {
         let x: string, w: string, col: { x: SafeStyle, width: SafeStyle };
-        x = (i * cellWidth) + '%';
-        w = 'calc(' + width + ' - 1px)';
+        x = getPercentStyle(i * cellWidth);
+        w = `calc(${ widthPercent } - 1px)`;
         col = {
           x: this.sanitizer.bypassSecurityTrustStyle(x),
           width: this.sanitizer.bypassSecurityTrustStyle(w)

@@ -1,6 +1,6 @@
 import { Grid } from './Grid.model';
 import { Cell } from './Cell.model';
-import { Utils } from '../Utils';
+import { getPercentStyle, Utils } from '../Utils';
 import { Rectangle } from './Rectangle.model';
 import { WidgetConfig } from './WidgetConfig.model';
 
@@ -170,12 +170,13 @@ export class GridRenderer {
     if (!render) {
       return {display: 'none'};
     }
+    const {height, width} = this.grid.cellSize;
 
     return {
-      top: ((render.top - 1) * this.grid.cellSize.height).toString() + '%',
-      height: (render.height * this.grid.cellSize.height).toString() + '%',
-      left: ((render.left - 1) * this.grid.cellSize.width).toString() + '%',
-      width: (render.width * this.grid.cellSize.width).toString() + '%'
+      top: getPercentStyle((render.top - 1) * height),
+      height: getPercentStyle(render.height * height),
+      left: getPercentStyle((render.left - 1) * width),
+      width: getPercentStyle(render.width * width)
     };
   }
 
