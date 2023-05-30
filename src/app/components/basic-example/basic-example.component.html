@@ -3,8 +3,8 @@
     <button class="btn btn-sm"
             [class.btn-primary]="editable"
             (click)="editable = !editable">
-      <clr-icon shape="pencil"
-                *ngIf="!editable"></clr-icon>
+      <cds-icon shape="pencil"
+                *ngIf="!editable"></cds-icon>
       {{editable && 'Done' || 'Edit'}}
     </button>
     <button class="btn btn-sm"
@@ -12,7 +12,7 @@
             (mouseover)="toggleHighlight(true)"
             (mouseleave)="toggleHighlight(false)"
             (click)="addWidget()">
-      <clr-icon shape="plus"></clr-icon>
+      <cds-icon shape="plus"></cds-icon>
       Widget
     </button>
     <div class="toggle-switch"
@@ -32,22 +32,22 @@
     <div class="btn-group">
       <button class="btn btn-sm btn-icon"
               (click)="doRows(false)">
-        <clr-icon shape="minus"></clr-icon>
+        <cds-icon shape="minus"></cds-icon>
       </button>
       <button class="btn btn-sm btn-icon"
               (click)="doRows(true)">
-        <clr-icon shape="plus"></clr-icon>
+        <cds-icon shape="plus"></cds-icon>
       </button>
     </div>
     Cols: <b>{{cols}}</b>
     <div class="btn-group">
       <button class="btn btn-sm btn-icon"
               (click)="doCols(false)">
-        <clr-icon shape="minus"></clr-icon>
+        <cds-icon shape="minus"></cds-icon>
       </button>
       <button class="btn btn-sm btn-icon"
               (click)="doCols(true)">
-        <clr-icon shape="plus"></clr-icon>
+        <cds-icon shape="plus"></cds-icon>
       </button>
     </div>
   </div>
@@ -68,10 +68,10 @@
           <div class="my-widgets"
                style="height:100%;width:100%; padding:10px;"
                [ngStyle]="{'background-color':widget.color}">
-            <clr-icon shape="trash"
+            <cds-icon shape="trash"
                       class="clickable"
                       (click)="askDeleteWidget($index)"
-                      *ngIf="editable"></clr-icon>
+                      *ngIf="editable"></cds-icon>
             <div>
               {{widget.text}}
             </div>

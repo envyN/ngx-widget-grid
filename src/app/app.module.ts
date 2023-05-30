@@ -9,6 +9,7 @@ import { AppModuleRouting } from './app.module.routing';
 import { AboutComponent } from './components/about/about.component';
 import { BasicExampleComponent } from './components/basic-example/basic-example.component';
 import { FixedDimensionExampleComponent } from './components/fixed-dimension-example/fixed-dimension-example.component';
+import {ClarityIcons, minusIcon, pencilIcon, plusIcon, trashIcon} from '@cds/core/icon';
 
 @NgModule({
             declarations: [
@@ -28,4 +29,13 @@ import { FixedDimensionExampleComponent } from './components/fixed-dimension-exa
             providers: [],
             bootstrap: [AppComponent]
           })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    ClarityIcons.addIcons(
+      plusIcon,
+      pencilIcon,
+      minusIcon,
+      trashIcon
+    );
+  }
+}
