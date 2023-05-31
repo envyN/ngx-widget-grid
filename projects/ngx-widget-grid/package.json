@@ -1,12 +1,32 @@
 {
   "name": "ngx-widget-grid",
-  "version": "15.0.0",
-  "dependencies": {
-    "tslib": "^2.5.2"
-  },
+  "version": "15.0.2",
+  "description": "Minimal Angular 2.0+ module for HTML5 Drag and Drop",
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"
   },
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/envyN/ngx-widget-grid.git"
+  },
+  "keywords": [
+    "angular",
+    "ng",
+    "angular2",
+    "angular4",
+    "angular5",
+    "angular6",
+    "angular7",
+    "widget",
+    "grid",
+    "rows",
+    "columns"
+  ],
+  "author": "Naveen Adarsh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/envyN/ngx-widget-grid/issues"
+  },
+  "homepage": "https://github.com/envyN/ngx-widget-grid#readme"
 }
