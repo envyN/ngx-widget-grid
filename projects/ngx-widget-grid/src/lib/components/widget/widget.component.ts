@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Optional, Output} from '@angular/core';
 import { WidgetConfig } from '../../models/WidgetConfig.model';
 import { Rectangle } from '../../models/Rectangle.model';
 import { ALL_DIRECTIONS, RESIZE_DIRECTIONS } from '../../Utils';
+import {NgxWidgetGridComponent} from '../grid/grid.component';
 
 @Component({
              selector: 'ngx-widget',
@@ -29,7 +30,8 @@ export class NgxWidgetComponent {
   public _resizable = false;
   public _resizeDirections: RESIZE_DIRECTIONS[] = ALL_DIRECTIONS;
 
-  constructor(private elRef: ElementRef) {
+  constructor(private elRef: ElementRef,
+              @Optional() public gridCmp?: NgxWidgetGridComponent) {
     this.widgetConfig = new WidgetConfig(this.position);
   }
 

@@ -1,7 +1,5 @@
 import { Directive, ElementRef, forwardRef, HostListener, Inject, Input, Renderer2 } from '@angular/core';
-import type { NgxWidgetGridComponent } from '../components/grid/grid.component';
 import { Rectangle } from '../models/Rectangle.model';
-import type { NgxWidgetComponent } from '../components/widget/widget.component';
 import { PathIterator } from '../models/PathIterator.model';
 
 export interface RectanglePixels {
@@ -30,10 +28,14 @@ export class NgxWidgetMoverDirective {
   @Input()
   public ngxWidgetMover = false;
 
+  @Input()
+  public widgetCmp;
+
+  @Input()
+  private gridCmp;
+
   constructor(private el: ElementRef,
-              private renderer: Renderer2,
-              @Inject('NgxWidgetGridComponent') private gridCmp: NgxWidgetGridComponent,
-              @Inject('NgxWidgetComponent') private widgetCmp: NgxWidgetComponent) {
+              private renderer: Renderer2) {
   }
 
   @HostListener('mousedown', ['$event'])
@@ -138,7 +140,7 @@ export class NgxWidgetMoverDirective {
       const obstructingWidgetId = this.gridCmp.areaObstructor(dropPosition);
       let finalPos;
       if (obstructingWidgetId && this.ngxWidgetMover) {
-        const obstructingWidgetCmp: NgxWidgetComponent = this.gridCmp.getWidgetById(obstructingWidgetId);
+        const obstructingWidgetCmp = this.gridCmp.getWidgetById(obstructingWidgetId);
         const obstructingWidgetPosition = this.gridCmp.getWidgetPositionByWidgetId(obstructingWidgetId);
         const draggedWidgetPosition = this.widgetCmp.position;
         this.widgetCmp.position = obstructingWidgetPosition;
