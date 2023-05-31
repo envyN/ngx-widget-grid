@@ -1,7 +1,7 @@
 import { Directive, ElementRef, forwardRef, HostListener, Inject, Input, Renderer2 } from '@angular/core';
-import { NgxWidgetGridComponent } from '../components/grid/grid.component';
+import type { NgxWidgetGridComponent } from '../components/grid/grid.component';
 import { Rectangle } from '../models/Rectangle.model';
-import { NgxWidgetComponent } from '../components/widget/widget.component';
+import type { NgxWidgetComponent } from '../components/widget/widget.component';
 import { PathIterator } from '../models/PathIterator.model';
 
 export interface RectanglePixels {
@@ -32,10 +32,8 @@ export class NgxWidgetMoverDirective {
 
   constructor(private el: ElementRef,
               private renderer: Renderer2,
-              @Inject(forwardRef(() => NgxWidgetGridComponent))
-              private gridCmp: NgxWidgetGridComponent,
-              @Inject(forwardRef(() => NgxWidgetComponent))
-              private widgetCmp: NgxWidgetComponent) {
+              @Inject('NgxWidgetGridComponent') private gridCmp: NgxWidgetGridComponent,
+              @Inject('NgxWidgetComponent') private widgetCmp: NgxWidgetComponent) {
   }
 
   @HostListener('mousedown', ['$event'])
