@@ -1,6 +1,6 @@
 {
   "name": "ngx-widget-grid",
-  "version": "15.0.2",
+  "version": "15.0.3",
   "description": "Minimal Angular 2.0+ module for HTML5 Drag and Drop",
   "peerDependencies": {
     "@angular/common": "^15.0.0",

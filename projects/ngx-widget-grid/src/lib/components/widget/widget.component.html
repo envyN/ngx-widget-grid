@@ -2,6 +2,8 @@
   <ng-content></ng-content>
 </div>
 <div [ngxWidgetMover]="swapOnMove"
+     [widgetCmp] = "this"
+     [gridCmp]="gridCmp"
      *ngIf="movable"
      class="wg-widget-edit-move">
 </div>
@@ -9,27 +11,43 @@
      class="wg-widget-edit-resize">
   <div class="wg-resize wg-resize-axis wg-resize-n"
        [ngxWidgetResizer]="allDirections.top"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isTopResizable"></div>
   <div class="wg-resize wg-resize-axis wg-resize-e"
        [ngxWidgetResizer]="allDirections.right"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isRightResizable"></div>
   <div class="wg-resize wg-resize-axis wg-resize-s"
        [ngxWidgetResizer]="allDirections.bottom"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isBottomResizable"></div>
   <div class="wg-resize wg-resize-axis wg-resize-w"
        [ngxWidgetResizer]="allDirections.left"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isLeftResizable"></div>
   <div class="wg-resize wg-resize-diag wg-resize-nw"
        [ngxWidgetResizer]="allDirections.topLeft"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isTopLeftResizable"></div>
   <div class="wg-resize wg-resize-diag wg-resize-ne"
        [ngxWidgetResizer]="allDirections.topRight"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isTopRightResizable"></div>
   <div class="wg-resize wg-resize-diag wg-resize-se"
        [ngxWidgetResizer]="allDirections.bottomRight"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isBottomRightResizable"></div>
   <div class="wg-resize wg-resize-diag wg-resize-sw"
        [ngxWidgetResizer]="allDirections.bottomLeft"
+       [widgetCmp] = "this"
+       [gridCmp]="gridCmp"
        [hidden]="!isBottomLeftResizable"></div>
 </div>
 
